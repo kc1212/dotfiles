@@ -150,8 +150,14 @@ map <C-t> :tabnew <Enter>
   " Type ? in NERDTree for help
 
 " ==== vim-powerline ====
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
-  let g:Powerline_symbols = 'fancy'
+"
+  if has("mac") || has("gui_mac")
+    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
+    let g:Powerline_symbols = 'fancy'
+  else
+    let g:Powerline_symbols = 'compatible'
+  endif
+
   set laststatus=2   " Always show the statusline
   set encoding=utf-8 " Necessary to show Unicode glyphs
   " Check :help powerline

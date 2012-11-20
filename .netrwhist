@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/kc/Dropbox/archieve/soton/MATH6111/lab4/sample_soln'
-let g:netrw_dirhist_2='/Users/kc'
-let g:netrw_dirhist_3='/Users/kc/.matplotlib'
-let g:netrw_dirhist_4='/Users/kc/.vim/bundle/ctrlp.vim'
-let g:netrw_dirhist_5='/Users/kc/.fonts/ttf-dejavu-powerline'
-let g:netrw_dirhist_6='/Users/kc/.vim/backups'
