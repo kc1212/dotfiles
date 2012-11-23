@@ -122,14 +122,25 @@ map <left> <nop>
 map <right> <nop>
 
 nnoremap ; :
+
 map <C-a> GVgg
 "map <C-n> :enew
 map <C-o> :e . <CR>
 map <C-s> :w <CR>
 imap <C-s> <Esc><C-s>
 map <C-c> y
-map <C-t> :tabnew <Enter>
 
+" tabs
+map <C-t> :tabnew <Enter>
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
+
+" With the following, you can press F8 to show all buffers in tabs, or to 
+" close all tabs (toggle: it alternately executes :tab ball and :tabo).
+let notabs = 1
+nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
 
 
 " ==================== Plugins =========================
