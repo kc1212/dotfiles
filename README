@@ -1,9 +1,19 @@
 
 ### to install ###
 
-git clone https://cong89@bitbucket.org/cong89/dotvim.git ~/.vim
-ln -s ~/.vim/vimrc ~/.vimrc
-ln -s ~/.vim/gvimrc ~/.gvimrc
-cd ~/.vim
+# clone the repo
+git clone https://cong89@bitbucket.org/cong89/dotfiles.git ~/dotfiles
+
+# link files to their correct places
+ln -s ~/dotfiles/vim/ ~/.vim/
+ln -s ~/dotfiles/vimrc ~/.vimrc
+ln -s ~/dotfiles/gvimrc ~/.gvimrc
+ln -s ~/dotfiles/xmonad ~/.xmonad
+ln -s ~/dotfiles/zshrc ~/.zshrc
+
+
+
+
+cd ~/dotfiles
 git submodule init
 git submodule update

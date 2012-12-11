@@ -1,21 +1,21 @@
-[submodule "bundle/neocomplcache"]
-	path = bundle/neocomplcache
+[submodule "vim/bundle/neocomplcache"]
+	path = vim/bundle/neocomplcache
 	url = git://github.com/Shougo/neocomplcache.git
-[submodule "bundle/ctrlp"]
-	path = bundle/ctrlp
+[submodule "vim/bundle/ctrlp"]
+	path = vim/bundle/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
-[submodule "bundle/nerdtree"]
-	path = bundle/nerdtree
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
-[submodule "bundle/powerline"]
-	path = bundle/powerline
+[submodule "vim/bundle/powerline"]
+	path = vim/bundle/powerline
 	url = git://github.com/Lokaltog/vim-powerline.git
-[submodule "bundle/colors-solarized"]
-	path = bundle/colors-solarized
+[submodule "vim/bundle/colors-solarized"]
+	path = vim/bundle/colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "bundle/prolog.vim"]
-	path = bundle/prolog.vim
+[submodule "vim/bundle/prolog.vim"]
+	path = vim/bundle/prolog.vim
 	url = git://github.com/adimit/prolog.vim.git
-[submodule "bundle/molokai"]
-	path = bundle/molokai
+[submodule "vim/bundle/molokai"]
+	path = vim/bundle/molokai
 	url = git://github.com/tomasr/molokai.git
