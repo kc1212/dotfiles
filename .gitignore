@@ -2,6 +2,7 @@ xmonad/xmonad.o
 xmonad/xmonad.hi
 xmonad/xmonad.errors
 xmonad/xmonad-i386-linux
+xmonad/xmonad-x86_64-linux
 vim/backups/
 *.swp
 .netrwhist
