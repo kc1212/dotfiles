@@ -4,16 +4,17 @@
 # clone the repo
 git clone https://cong89@bitbucket.org/cong89/dotfiles.git ~/dotfiles
 
+# get the submodules
+cd ~/dotfiles
+git submodule init
+git submodule update
+
 # link files to their correct places
 ln -s ~/dotfiles/vim/ ~/.vim/
 ln -s ~/dotfiles/vimrc ~/.vimrc
 ln -s ~/dotfiles/gvimrc ~/.gvimrc
 ln -s ~/dotfiles/xmonad ~/.xmonad
 ln -s ~/dotfiles/zshrc ~/.zshrc
+ln -s ~/dotfiles/xmobarrc ~/.xmobarrc
+ln -s ~/dotfiles/fehbg ~/.fehbg
 
-
-
-
-cd ~/dotfiles
-git submodule init
-git submodule update
