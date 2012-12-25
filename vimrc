@@ -116,10 +116,10 @@ set sidescroll=1
 
 " ================ Key Bindings =====================
 " No arrow keys
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+" map <up> <nop>
+" map <down> <nop>
+" map <left> <nop>
+" map <right> <nop>
 
 nnoremap ; :
 
