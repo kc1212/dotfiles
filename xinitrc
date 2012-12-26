@@ -17,18 +17,15 @@ xscreensaver -no-splash &         # starts screensaver daemon
 xsetroot -cursor_name left_ptr &  # sets the cursor icon
 sh ~/.fehbg &                     # sets the background image
 
-#setup trayer
-trayer --edge top --align right --SetDockType true --SetPartialStrut true \
---expand true --width 15 --height 12 --transparent true --tint 0x000000 &
+# setup trayer
+# trayer --edge top --align right --margin 0 --width 120 --widthtype pixel --height 12 \
+#     --padding 1 --tint 0x000000 --transparent true &
 
-#start dropbox daemon
-dropboxd &
+# start dropbox daemon
+# dropboxd &
 
-# exec gnome-session
-# exec startkde
-# exec startxfce4
 exec xmonad
-# exec startlxde
+# exec startxfce4
 # exec openbox-session
 
 # set keyboad layout
