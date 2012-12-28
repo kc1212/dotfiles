@@ -34,7 +34,7 @@ if [ "$mySession" == "xmonad" ]; then
 elif [ "$mySession" == "openbox-session" ]; then
   xrdb -merge ~/.Xresources &       # update x resources db
   sh ~/.fehbg &                     # sets the background image
-  (sleep 10 && conky -d -c ~/.conky/conkyrc) &
+  conky -d -c ~/.conky/conkyrc &
   # openbox automatically starts xscreensaver
 
 else
