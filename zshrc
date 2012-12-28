@@ -1,11 +1,13 @@
+# export EDITOR="vim"
 
-# enable command completion and coloured prompt
-autoload -U compinit promptinit
-compinit                       # command completion
-promptinit                     # coloured prompt
- 
-# This will set the default prompt to the walters theme
-prompt walters
+# enable command completion
+autoload -U compinit
+compinit
+
+# enable coloured prompt
+autoload -U promptinit
+promptinit
+prompt walters # use walters theme
 
 alias pd="pushd" #use this with popd
 # alias open xdg-open
@@ -14,4 +16,4 @@ alias xterm="xterm -bg black -fg white"
 alias ll="ls -lh"
 
 # show cool archlinux logo
-/usr/bin/archey
+# /usr/bin/archey
