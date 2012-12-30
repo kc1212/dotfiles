@@ -1,4 +1,3 @@
-# export EDITOR="vim"
 
 # enable command completion
 autoload -U compinit
@@ -8,6 +7,14 @@ compinit
 autoload -U promptinit
 promptinit
 prompt walters # use walters theme
+
+# for ibus
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
+# defaults
+export EDITOR=vim
 
 alias pd="pushd" #use this with popd
 # alias open xdg-open

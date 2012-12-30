@@ -17,13 +17,16 @@
 --        , template = "%StdinReader% }{ %multicpu% | %memory% | %swap% | %eth0% | <fc=#FFFFCC>%date%</fc> | %EGLL%"
 --        }
 
-Config { font = "xft:DejaVu Sans Mono:pixelsize=12"
+-- referenced from
+-- https://github.com/andrusha/dotfiles/blob/master/.xmobarrc
+
+Config { font = "xft:Terminus:pixelsize=10"
        , bgColor = "black"
        , fgColor = "grey"
        , position = TopW L 90
-       , commands = [
-                      Run Weather "EGLL"  -- LONDON HEATHROW
-                                  ["-t"      , "LHR <tempC>°C"         , 
+       , commands = [ 
+                      Run Weather "EGLL" 
+                                  ["-t"      , "SPb <tempC>°C"         , 
                                   "-L"       , "8"                     , 
                                   "-H"       , "20"                    , 
                                   "--high"   , "orange"                , 
@@ -43,7 +46,7 @@ Config { font = "xft:DejaVu Sans Mono:pixelsize=12"
 
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
 
-                    , Run Date "%a %b %_d %H:%M:%S" "date" 10
+                    , Run Date "%a %b %_d | %H:%M:%S" "date" 10
 
                     , Run CoreTemp ["-t", "<core0>°C", 
                                     "-L", "40",
@@ -51,13 +54,9 @@ Config { font = "xft:DejaVu Sans Mono:pixelsize=12"
                                     "-l", "lightblue",
                                     "-h", "orange"] 50
 
-                    --, Run Volume "Pulse" 
-                    --             "master" 
-                    --             ["-t", "Vol: <volume>%"] 1
                    , Run StdinReader
-                   , Run Kbd [("us", "US"), ("cn", "CN")]
                    ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %EGLL% | %multicpu% %coretemp% <fc=#555>|</fc> %memory% <fc=#555>|</fc> %eth0% | <fc=white>%date%</fc> %kbd% "
+       , template = "%StdinReader% }{ %EGLL% | %multicpu% %coretemp% <fc=#555>|</fc> %memory% <fc=#555>|</fc> %eth0% | <fc=white>%date%</fc> "
 }
