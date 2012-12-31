@@ -22,6 +22,10 @@ export EDITOR=vim
 export WINEARCH=win32
 export WINEPREFIX=~/.wine
 
+# disabled seahorse-ssh-askpass
+# http://kartzontech.blogspot.co.uk/2011/04/how-to-disable-gnome-ssh-askpass.html
+unset SSH_ASK_PASS
+
 alias pd="pushd" #use this with popd
 # alias open xdg-open
 # alias sicstus "rlwrap sicstus"
