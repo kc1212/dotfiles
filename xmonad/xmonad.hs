@@ -1,6 +1,6 @@
 -- xmonad config used by Vic Fryzel
 -- Author: Vic Fryzel
--- modified by me~ cong89@github
+-- modified by me: cong89@bitbucket
 -- http://github.com/vicfryzel/xmonad-config
  
 import System.IO
@@ -25,15 +25,15 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal = "/usr/bin/urxvt"
+myTerminal = "urxvtc" -- makes use of urxvt daemon
 
 
 ------------------------------------------------------------------------
 -- Workspaces
 -- The default number of workspaces (virtual screens) and their names.
 --
-myWorkspaces = ["1:term","2:code","3:web","4:media"] ++ map show [5..9]
- 
+myWorkspaces = ["1:main","2:work","3:web","4:play"] ++ map show [5..9]
+
 
 ------------------------------------------------------------------------
 -- Window rules
@@ -50,13 +50,17 @@ myWorkspaces = ["1:term","2:code","3:web","4:media"] ++ map show [5..9]
 -- 'className' and 'resource' are used below.
 --
 myManageHook = composeAll
-    [ className =? "Google-chrome"  --> doShift "2:web"
+    [ className =? "Chromium"       --> doShift "2:web"
     , resource  =? "desktop_window" --> doIgnore
     , className =? "Galculator"     --> doFloat
     , className =? "Steam"          --> doFloat
     , className =? "Gimp"           --> doFloat
     , resource  =? "gpicview"       --> doFloat
     , className =? "MPlayer"        --> doFloat
+    , className =? "Skype"          --> doFloat
+    , className =? "Vlc"            --> doFloat
+    , className =? "Wine"            --> doFloat
+    , className =? "mplayer2"            --> doFloat
     -- , className =? "VirtualBox"     --> doShift "4:vm"
     , className =? "Xchat"          --> doShift "5:media"
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
@@ -139,13 +143,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Take a screenshot in select mode.
   -- After pressing this key binding, click a window, or draw a rectangle with
   -- the mouse.
-  , ((modMask .|. shiftMask, xK_p),
-     spawn "select-screenshot")
+  -- , ((modMask .|. shiftMask, xK_p),
+  --    spawn "select-screenshot")
 
   -- Take full screenshot in multi-head mode.
   -- That is, take a screenshot of everything you see.
-  , ((modMask .|. controlMask .|. shiftMask, xK_p),
-     spawn "screenshot")
+  -- , ((modMask .|. controlMask .|. shiftMask, xK_p),
+  --    spawn "screenshot")
 
   -- Mute volume.
   , ((modMask .|. controlMask, xK_m),
@@ -160,20 +164,20 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      spawn "amixer -q set Master 10%+")
 
   -- Audio previous.
-  , ((0, 0x1008FF16),
-     spawn "")
+  -- , ((0, 0x1008FF16),
+  --    spawn "")
 
   -- Play/pause.
-  , ((0, 0x1008FF14),
-     spawn "")
+  -- , ((0, 0x1008FF14),
+  --    spawn "")
 
   -- Audio next.
-  , ((0, 0x1008FF17),
-     spawn "")
+  -- , ((0, 0x1008FF17),
+  --    spawn "")
 
   -- Eject CD tray.
-  , ((0, 0x1008FF2C),
-     spawn "eject -T")
+  -- , ((0, 0x1008FF2C),
+  --    spawn "eject -T")
 
   --------------------------------------------------------------------
   -- "Standard" xmonad key bindings
@@ -276,7 +280,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- Focus rules
 -- True if your focus should follow your mouse cursor.
 myFocusFollowsMouse :: Bool
-myFocusFollowsMouse = True
+myFocusFollowsMouse = False
  
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
   [
@@ -321,7 +325,7 @@ myStartupHook = return ()
 -- Run xmonad with all the defaults we set up.
 --
 main = do
-  xmproc <- spawnPipe "xmobar"
+  xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc"
   xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc

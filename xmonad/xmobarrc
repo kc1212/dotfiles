@@ -26,7 +26,7 @@ Config { font = "xft:Terminus:pixelsize=10"
        , position = TopW L 90
        , commands = [ 
                       Run Weather "EGLL" 
-                                  ["-t"      , "SPb <tempC>°C"         , 
+                                  ["-t"      , "LHR <tempC>°C"         , 
                                   "-L"       , "8"                     , 
                                   "-H"       , "20"                    , 
                                   "--high"   , "orange"                , 

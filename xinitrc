@@ -21,17 +21,19 @@ mySession="xmonad"
 
 if [ "$mySession" == "xmonad" ]; then
   xrdb -merge ~/.Xresources &       # update x resources db
-  xscreensaver -no-splash &         # starts screensaver daemon 
   xsetroot -cursor_name left_ptr &  # sets the cursor icon
+  xset m 1 0 &                      # set mouse accelecation and threshold
   sh ~/.fehbg &                     # sets the background image
-  # trayer --edge top --align right --margin 0 --width 108 --widthtype pixel --height 12 \
-  #     --padding 1 --tint 0x000000 --transparent true & # set  trayer
+  volumeicon &                      # start volume icon
+
   trayer --edge top --align right --SetDockType true --SetPartialStrut true \
    --expand true --width 10 --transparent true --tint 0x000000 --height 12 &
+
+  ibus-daemon -rxvd &               # start input daemon
   dropboxd &                        # start dropbox daemon
-  volumeicon &
-  ibus-daemon -rxvd &
-  conky -d -c ~/.conky/conkyrc &
+  xscreensaver -no-splash &         # start screensaver daemon
+  urxvtd &                          # terminal daemon, launch using urxvtc
+  conky -d -c ~/.conky/conkyrc &    # some fancy conky shit
 
 elif [ "$mySession" == "openbox-session" ]; then
   xrdb -merge ~/.Xresources &       # update x resources db
