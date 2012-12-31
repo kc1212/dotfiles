@@ -188,7 +188,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
      kill)
 
   -- Cycle through the available layout algorithms.
-  , ((modMask, xK_space),
+  , ((modMask, xK_x), -- originally xK_space
      sendMessage NextLayout)
 
   --  Reset the layouts on the current workspace to default.
