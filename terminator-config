@@ -3,6 +3,8 @@
   title_transmit_bg_color = "#eee8d5"
   focus = system
   title_transmit_fg_color = "#002b36"
+  use_system_font = False
+  font = Terminus 10
 [keybindings]
   go_up = <Alt>k
   switch_to_tab_10 = <Alt>0
