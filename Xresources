@@ -23,7 +23,7 @@
 
 ! urxvt
 URxvt*geometry: 90x50
-URxvt*font:  xft:Terminus:pixelsize=10
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
 URxvt*borderless: 1
 URxvt*scrollBar: false
 URxvt*saveLines: 5000

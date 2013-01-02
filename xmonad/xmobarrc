@@ -20,7 +20,7 @@
 -- referenced from
 -- https://github.com/andrusha/dotfiles/blob/master/.xmobarrc
 
-Config { font = "xft:Terminus:pixelsize=10"
+Config { font = "xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hint=true"
        , bgColor = "black"
        , fgColor = "grey"
        , position = TopW L 90

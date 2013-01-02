@@ -174,9 +174,11 @@ nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Ba
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
     let g:Powerline_symbols = 'fancy'
   else
+    set guifont=DejaVu\ Sans\ Mono\ 10
     let g:Powerline_symbols = 'compatible'
   endif
 
+  let g:Powerline_symbols = 'compatible' " for now, set all to compatible
   set laststatus=2   " Always show the statusline
   set encoding=utf-8 " Necessary to show Unicode glyphs
   " Check :help powerline
