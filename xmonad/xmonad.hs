@@ -16,6 +16,7 @@ import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Actions.CycleWS -- for workspace manipulations
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
 
@@ -59,8 +60,8 @@ myManageHook = composeAll
     , className =? "MPlayer"        --> doFloat
     , className =? "Skype"          --> doFloat
     , className =? "Vlc"            --> doFloat
-    , className =? "Wine"            --> doFloat
-    , className =? "mplayer2"            --> doFloat
+    , className =? "Wine"           --> doFloat
+    , className =? "Qbittorrent"    --> doFloat
     -- , className =? "VirtualBox"     --> doShift "4:vm"
     , className =? "Xchat"          --> doShift "5:media"
     , isFullscreen --> (doF W.focusDown <+> doFullFloat)]
@@ -257,9 +258,20 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Restart xmonad.
   , ((modMask, xK_q),
      restart "xmonad" True)
+
+  -- CycleWS setup, from XMonad.Actions
+   , ((modMask,               xK_Down),  nextWS)
+   , ((modMask,               xK_Up),    prevWS)
+   , ((modMask .|. shiftMask, xK_Down),  shiftToNext)
+   , ((modMask .|. shiftMask, xK_Up),    shiftToPrev)
+   , ((modMask,               xK_Right), nextScreen)
+   , ((modMask,               xK_Left),  prevScreen)
+   , ((modMask .|. shiftMask, xK_Right), shiftNextScreen)
+   , ((modMask .|. shiftMask, xK_Left),  shiftPrevScreen)
+   , ((modMask,               xK_z),     toggleWS)
   ]
   ++
- 
+
   -- mod-[1..9], Switch to workspace N
   -- mod-shift-[1..9], Move client to workspace N
   [((m .|. modMask, k), windows $ f i)
@@ -280,7 +292,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- Focus rules
 -- True if your focus should follow your mouse cursor.
 myFocusFollowsMouse :: Bool
-myFocusFollowsMouse = False
+myFocusFollowsMouse = True
  
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
   [
