@@ -4,6 +4,7 @@ export EDITOR=vim
 # ruby gem paths
 export GEM_HOME=$HOME/.gem
 export GEM_PATH=$HOME/.gem
+export PATH=$PATH:$HOME/.gem/ruby/1.9.1/bin
 
 if [[ $platform == 'linux' ]]; then
   # for ibus
