@@ -1,10 +1,13 @@
+# detects operating system, creates variable $platform
+source $HOME/dotfiles/detectOS
+
 # defaults
 export EDITOR=vim
 
-# ruby gem paths
+# ruby gem paths and variables
 export GEM_HOME=$HOME/.gem
 export GEM_PATH=$HOME/.gem
-export PATH=$PATH:$HOME/.gem/ruby/1.9.1/bin
+export PATH=$PATH:$HOME/.gem/bin
 
 if [[ $platform == 'linux' ]]; then
   # for ibus
@@ -18,6 +21,6 @@ if [[ $platform == 'linux' ]]; then
 
 elif [[ $platform == 'darwin' ]]; then
   # for python (mac only)
-  export PATH=/usr/local/share/python:$PATH
+  export PATH=$PATH:/usr/local/share/python
 
 fi
