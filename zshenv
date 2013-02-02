@@ -7,7 +7,7 @@ export EDITOR=vim
 # ruby gem paths and variables
 export GEM_HOME=$HOME/.gem
 export GEM_PATH=$HOME/.gem
-export PATH=$PATH:$HOME/.gem/bin
+export PATH=$HOME/.gem/bin:$PATH
 
 if [[ $platform == 'linux' ]]; then
   # for ibus
@@ -20,7 +20,11 @@ if [[ $platform == 'linux' ]]; then
   export WINEPREFIX=~/.wine
 
 elif [[ $platform == 'darwin' ]]; then
-  # for python (mac only)
-  export PATH=$PATH:/usr/local/share/python
+
+  # export PATH=/usr/gcc-4.7.2/bin:$PATH
+  export PATH=/usr/local/share/python:$PATH
+  export PYTHONPATH=/usr/local/lib/python:$PYTHONPATH
+  export PATH=/usr/local/bin:$PATH
+
 
 fi
