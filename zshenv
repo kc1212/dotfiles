@@ -7,8 +7,8 @@ export CLICOLOR=TRUE
 
 # ruby gem paths and variables
 export GEM_HOME=$HOME/.gem
-export GEM_PATH=$HOME/.gem
-export PATH=$HOME/.gem/bin:$PATH
+export GEM_PATH=$GEM_HOME
+export PATH=$HOME/.gem/ruby/1.9.1/bin:$PATH
 
 if [[ $platform == 'linux' ]]; then
   # for ibus
