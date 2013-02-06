@@ -1,5 +1,6 @@
 # defaults
 export EDITOR=vim
+export CLICOLOR=TRUE
 
 # ruby gem paths
 export GEM_HOME=$HOME/.gem
