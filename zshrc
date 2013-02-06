@@ -1,15 +1,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# detect platform, taken from
-# http://stackoverflow.com/questions/394230/detect-the-os-from-a-bash-script
-platform='unknown'
-unamestr=`uname`
-if [[ "$unamestr" == 'Linux' ]]; then
-  platform='linux'
-elif [[ "$unamestr" == 'Darwin' ]]; then
-  platform='darwin'
-fi
+# detect operating system, creates variable $platform
+source $HOME/dotfiles/detectOS
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
