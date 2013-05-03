@@ -154,7 +154,7 @@ nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Ba
   colorscheme solarized
   call togglebg#map("<F5>")
   " use the following line when using vim in terminal
-  " let g:solarized_termcolors=256
+  let g:solarized_termcolors=256
 
 " == prolog mode ===
   au BufRead,BufNewFile *.pl set filetype=prolog
