@@ -26,7 +26,7 @@ import qualified Data.Map        as M
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal = "urxvtc" -- makes use of urxvt daemon
+myTerminal = "xterm" -- makes use of urxvt daemon
 
 
 ------------------------------------------------------------------------
@@ -338,6 +338,7 @@ myStartupHook = return ()
 --
 main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc"
+  -- xmproc <- spawnPipe "tint2 ~/.config/tint2/tint2rc"
   xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc

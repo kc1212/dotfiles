@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.20 for kc on Mon Dec 24 22:03:14 2012.
+# Written by xscreensaver-demo 5.15 for kc on Fri May  3 01:26:35 2013.
 # http://www.jwz.org/xscreensaver/
 
 timeout:	0:15:00
@@ -34,8 +34,8 @@ grabVideoFrames:    False
 chooseRandomImages: False
 imageDirectory:	
 
-mode:		one
-selected:	197
+mode:		blank
+selected:	154
 
 textMode:	file
 textLiteral:	XScreenSaver
@@ -245,6 +245,7 @@ programs:								      \
   GL: 				hilbert -root				    \n\
   GL: 				tronbit -root				    \n\
 				electricsheep --root 1			    \n\
+				unicode -root				    \n\
 
 
 pointerPollTime:    0:00:05

@@ -23,7 +23,7 @@
 Config { font = "xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hint=true"
        , bgColor = "black"
        , fgColor = "grey"
-       , position = TopW L 90
+       , position = TopW L 100
        , commands = [ 
                       Run Weather "EGLL" 
                                   ["-t"      , "LHR <tempC>°C"         , 
@@ -53,10 +53,15 @@ Config { font = "xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hint=true"
                                     "-H", "65",
                                     "-l", "lightblue",
                                     "-h", "orange"] 50
-
+                    , Run BatteryP ["BAT0"]
+                                   ["-t", "<acstatus><watts> (<left>%)",
+                                    "-L", "10", "-H", "80", "-p", "3",
+                                    "--", "-O", "<fc=green>On</fc> - ", "-o", "",
+                                    "-L", "-15", "-H", "-5",
+                                    "-l", "red", "-m", "blue", "-h", "green"] 100
                    , Run StdinReader
                    ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %EGLL% | %multicpu% %coretemp% <fc=#555>|</fc> %memory% <fc=#555>|</fc> %eth0% | <fc=white>%date%</fc> "
+       , template = "%StdinReader% }{ %EGLL% <fc=#555>|</fc> %battery% <fc=#555>|</fc> %multicpu% %coretemp% <fc=#555>|</fc> %memory% <fc=#555>|</fc> %eth0% | <fc=white>%date%</fc> "
 }
