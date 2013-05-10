@@ -32,12 +32,12 @@ Config { font = "xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hint=true"
                                   "--high"   , "orange"                , 
                                   "--low"    , "lightblue"] 36000
 
-                    , Run Network "eth0" 
+                    , Run Network "wlan0" 
                                   ["-L"      , "50"        , 
                                   "-H"       , "500"       , 
                                   "--normal" , "lightblue" , 
                                   "--high"   , "lightgreen",
-                                  "-t"       , "Net: <rx> KbS"] 10
+                                  "-t"       , "Net: <rx> kbps"] 10
 
                     , Run MultiCpu ["-L"       , "4"          ,
                                     "-H"       , "50"         , 
@@ -56,12 +56,12 @@ Config { font = "xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hint=true"
                     , Run BatteryP ["BAT0"]
                                    ["-t", "<acstatus><watts> (<left>%)",
                                     "-L", "10", "-H", "80", "-p", "3",
-                                    "--", "-O", "<fc=green>On</fc> - ", "-o", "",
+                                    "--", "-O", "<fc=green>On</fc>", "-o", "",
                                     "-L", "-15", "-H", "-5",
                                     "-l", "red", "-m", "blue", "-h", "green"] 100
                    , Run StdinReader
                    ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %EGLL% <fc=#555>|</fc> %battery% <fc=#555>|</fc> %multicpu% %coretemp% <fc=#555>|</fc> %memory% <fc=#555>|</fc> %eth0% | <fc=white>%date%</fc> "
+       , template = "%StdinReader% }{ %EGLL% <fc=#555>|</fc> %battery% <fc=#555>|</fc> %multicpu% %coretemp% <fc=#555>|</fc> %memory% <fc=#555>|</fc> %wlan0% <fc=#555>|</fc> <fc=white>%date%</fc> "
 }

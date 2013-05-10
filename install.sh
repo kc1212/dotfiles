@@ -1,4 +1,5 @@
 #!/bin/bash
+# vim, git and zsh files
 
 # update the submodules
 cd ~/dotfiles

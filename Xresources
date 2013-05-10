@@ -1,41 +1,5 @@
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!! CONFIGURATIONS !!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-! urxvt
-! URxvt*geometry: 90x50
-! URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
-! URxvt*borderless: 1
-! URxvt*scrollBar: false
-! URxvt*saveLines: 5000
-! URxvt*loginShell: true
-
-! urxvt perl extension, from urxvt-perls
-! URxvt.perl-ext-common:default,clipboard,matcher,keyboard-select
-! URxvt.keysym.M-u:     perl:url-select:select_next
-! URxvt.urlLauncher:    /usr/bin/chromium
-! URxvt.underlineURLs:  True
-! URxvt.matcher.button: 1
-! URxvt.keysym.M-Escape:perl:keyboard-select:activate
-! URxvt.keysym.M-c:     perl:clipboard:copy
-! URxvt.keysym.M-v:     perl:clipboard:paste
-! URxvt.keysym.M-C-v:   perl:clipboard:paste_escaped
-!URxvt.copyCommand:   xsel -ib
-!URxvt.pasteCommand:  xsel -ob
-
-! for solving vim tab problem
-! https://bbs.archlinux.org/viewtopic.php?id=71462 
-! URxvt.keysym.Control-Up: \033[1;5A
-! URxvt.keysym.Control-Down: \033[1;5B
-! URxvt.keysym.Control-Left: \033[1;5D
-! URxvt.keysym.Control-Right: \033[1;5C
-
-! xterm
-xterm*faceName: DejaVu Sans Mono:pixelsize=12;antialias=true;hinting=true
-
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!! COLOUR SETTINGS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !
@@ -79,6 +43,39 @@ xterm*faceName: DejaVu Sans Mono:pixelsize=12;antialias=true;hinting=true
 ! #define S_base3         #002b36
 
 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!! CONFIGURATIONS !!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+! urxvt
+! URxvt*geometry: 90x50
+! URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+! URxvt*borderless: 1
+! URxvt*scrollBar: false
+! URxvt*saveLines: 5000
+! URxvt*loginShell: true
+
+! urxvt perl extension, from urxvt-perls
+! URxvt.perl-ext-common:default,clipboard,matcher,keyboard-select
+! URxvt.keysym.M-u:     perl:url-select:select_next
+! URxvt.urlLauncher:    /usr/bin/chromium
+! URxvt.underlineURLs:  True
+! URxvt.matcher.button: 1
+! URxvt.keysym.M-Escape:perl:keyboard-select:activate
+! URxvt.keysym.M-c:     perl:clipboard:copy
+! URxvt.keysym.M-v:     perl:clipboard:paste
+! URxvt.keysym.M-C-v:   perl:clipboard:paste_escaped
+!URxvt.copyCommand:   xsel -ib
+!URxvt.pasteCommand:  xsel -ob
+
+! for solving vim tab problem
+! https://bbs.archlinux.org/viewtopic.php?id=71462 
+! URxvt.keysym.Control-Up: \033[1;5A
+! URxvt.keysym.Control-Down: \033[1;5B
+! URxvt.keysym.Control-Left: \033[1;5D
+! URxvt.keysym.Control-Right: \033[1;5C
+
+
 ! To only apply colors to your terminal, for example, prefix
 ! the color assignment statement with its name. Example:
 !
@@ -108,7 +105,16 @@ xterm*faceName: DejaVu Sans Mono:pixelsize=12;antialias=true;hinting=true
 ! URxvt*color13:                 S_violet
 ! URxvt*color14:                 S_base1
 ! URxvt*color15:                 S_base3
-! 
+
+! xterm
+xterm*faceName: DejaVu Sans Mono:pixelsize=12;antialias=true;hinting=true
+xterm*vt100.translations: #override \
+        Shift <KeyPress> Up:      scroll-back(1, line) \n\
+        Shift <KeyPress> Down:    scroll-forw(1, line) \n\
+        Shift <KeyPress> Insert:  string(0x1b) string(0x5b) string(2;2~) \n\
+        Ctrl Shift <KeyPress> C:  select-end(PRIMARY,CLIPBOARD,CUT_BUFFER0) \n\
+        Ctrl Shift <KeyPress> V:  insert-selection(CLIPBOARD, CUT_BUFFER0, PRIMARY)
+
 
 ! Xterm colours
 xterm*background:              S_base03
