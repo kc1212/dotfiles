@@ -106,8 +106,21 @@
 ! URxvt*color14:                 S_base1
 ! URxvt*color15:                 S_base3
 
-! xterm
+! Every shell is a login shell by default (for inclusion of all necessary environment variables)
+xterm*loginshell: true
+
+! xterm, font, saved lines
 xterm*faceName: DejaVu Sans Mono:pixelsize=12;antialias=true;hinting=true
+xterm*saveLines: 4096
+
+! right hand side scrollbar...
+xterm*rightScrollBar: true
+xterm*ScrollBar: true
+
+! stop output to terminal from jumping down to bottom of scroll again
+xterm*scrollTtyOutput: false
+
+! clipboard 
 xterm*vt100.translations: #override \
         Shift <KeyPress> Up:      scroll-back(1, line) \n\
         Shift <KeyPress> Down:    scroll-forw(1, line) \n\

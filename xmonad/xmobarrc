@@ -63,5 +63,5 @@ Config { font = "xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hint=true"
                    ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %EGLL% <fc=#555>|</fc> %battery% <fc=#555>|</fc> %multicpu% %coretemp% <fc=#555>|</fc> %memory% <fc=#555>|</fc> %wlan0% <fc=#555>|</fc> <fc=white>%date%</fc> "
+       , template = "%StdinReader% }{ %EGLL% <fc=#555>|</fc> %battery% <fc=#555>|</fc> %multicpu% %coretemp% <fc=#555>|</fc> %memory% <fc=#555>|</fc> %wlan0% <fc=#555>|</fc> %date%"
 }
