@@ -139,7 +139,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   -- Launch dmenu via yeganesh... not
   -- Use this to launch programs without a key binding.
   , ((modMask, xK_p),
-     spawn "~/.config/dmenu/dmenu-bind.sh")
+     -- spawn "~/.config/dmenu/dmenu-bind.sh")
+     spawn "dmenu_run")
 
   -- Take a screenshot in select mode.
   -- After pressing this key binding, click a window, or draw a rectangle with

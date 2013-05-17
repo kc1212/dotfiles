@@ -15,12 +15,13 @@ fi
 # set keyboad layout
 # setxkbmap -layout us
 
+xrdb -merge ~/.Xresources &       # update x resources db
+
 # my sessions: xmonad || openbox-session || gnome-session-cinnamon
 # || gnome-session || startxfce4
 mySession="xmonad"
 
 if [ "$mySession" == "xmonad" ]; then
-  xrdb -merge ~/.Xresources &       # update x resources db
   xsetroot -cursor_name left_ptr &  # sets the cursor icon
   xset m 1 0 &                      # set mouse accelecation and threshold
   sh ~/.fehbg &                     # sets the background image
@@ -32,17 +33,25 @@ if [ "$mySession" == "xmonad" ]; then
   ibus-daemon -rxvd &               # start input daemon
   dropboxd &                        # start dropbox daemon
   xscreensaver -no-splash &         # start screensaver daemon
-  urxvtd &                          # terminal daemon, launch using urxvtc
-  conky -d -c ~/.conky/conkyrc &    # some fancy conky shit
+  # urxvtd &                          # terminal daemon, launch using urxvtc
+  # conky -d -c ~/.conky/conkyrc &    # some fancy conky shit
+
+  if [ -x /usr/bin/nm-applet ] ; then
+     nm-applet --sm-disable &
+  fi
+
+  if [ -x /usr/bin/gnome-power-manager ] ; then
+     sleep 3
+     gnome-power-manager &
+  fi
 
 elif [ "$mySession" == "openbox-session" ]; then
-  xrdb -merge ~/.Xresources &       # update x resources db
   # sh ~/.fehbg &                     # sets the background image
   conky -d -c ~/.conky/conkyrc &
   # openbox automatically starts xscreensaver
 
 else
-  echo "invalid session!"
+  echo "another session!"
 
 fi
 

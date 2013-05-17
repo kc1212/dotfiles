@@ -24,38 +24,41 @@ Config { font = "xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hint=true"
        , bgColor = "black"
        , fgColor = "grey"
        , position = TopW L 100
-       , commands = [ 
-                      Run Weather "EGLL" 
-                                  ["-t"      , "LHR <tempC>°C"         , 
-                                  "-L"       , "8"                     , 
-                                  "-H"       , "20"                    , 
-                                  "--high"   , "orange"                , 
-                                  "--low"    , "lightblue"] 36000
+       , border = BottomB
+       , borderColor = "grey"
+       , commands = [
+                    --   Run Weather "EGLL"
+                    --               ["-t"      , "LHR <tempC>°C"         ,
+                    --               "-L"       , "8"                     ,
+                    --               "-H"       , "20"                    ,
+                    --               "--high"   , "orange"                ,
+                    --               "--low"    , "lightblue"] 36000
 
-                    , Run Network "wlan0" 
-                                  ["-L"      , "50"        , 
-                                  "-H"       , "500"       , 
-                                  "--normal" , "lightblue" , 
+                    Run Network "wlp3s0" 
+                                  ["-L"      , "50"        ,
+                                  "-H"       , "500"       ,
+                                  "--normal" , "lightblue" ,
                                   "--high"   , "lightgreen",
                                   "-t"       , "Net: <rx> kbps"] 10
 
                     , Run MultiCpu ["-L"       , "4"          ,
-                                    "-H"       , "50"         , 
-                                    "--normal" , "lightgreen" , 
+                                    "-H"       , "50"         ,
+                                    "--normal" , "lightgreen" ,
                                     "--high"   , "orange"] 10
 
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
 
                     , Run Date "%a %b %_d | %H:%M:%S" "date" 10
 
-                    , Run CoreTemp ["-t", "<core0>°C", 
+                    , Run CoreTemp ["-t", "<core0>°C",
                                     "-L", "40",
                                     "-H", "65",
                                     "-l", "lightblue",
                                     "-h", "orange"] 50
+                    -- , Run Battery ["-L","50","-H","75","--high","green","--normal","yellow", "--low", "red", "--template", "Bat: <left>%"] 100
                     , Run BatteryP ["BAT0"]
-                                   ["-t", "<acstatus><watts> (<left>%)",
-                                    "-L", "10", "-H", "80", "-p", "3",
+                                   ["-t", "<acstatus><left>%",
+                                    "-L", "20", "-H", "75", "-p", "3",
                                     "--", "-O", "<fc=green>On</fc>", "-o", "",
                                     "-L", "-15", "-H", "-5",
                                     "-l", "red", "-m", "blue", "-h", "green"] 100
@@ -63,5 +66,5 @@ Config { font = "xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hint=true"
                    ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "%StdinReader% }{ %EGLL% <fc=#555>|</fc> %battery% <fc=#555>|</fc> %multicpu% %coretemp% <fc=#555>|</fc> %memory% <fc=#555>|</fc> %wlan0% <fc=#555>|</fc> %date%"
+       , template = "%StdinReader% }{%battery% <fc=#555>|</fc> %multicpu% %coretemp% <fc=#555>|</fc> %memory% <fc=#555>|</fc> %wlp3s0% <fc=#555>|</fc> %date% --TRAYER LOCATION!!!---"
 }
