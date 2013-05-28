@@ -46,8 +46,8 @@ if [ "$mySession" == "xmonad" ]; then
   fi
 
 elif [ "$mySession" == "openbox-session" ]; then
-  # sh ~/.fehbg &                     # sets the background image
-  conky -d -c ~/.conky/conkyrc &
+  sh ~/.fehbg &                     # sets the background image
+  # conky -d -c ~/.conky/conkyrc &
   # openbox automatically starts xscreensaver
 
 else
