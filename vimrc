@@ -44,6 +44,11 @@ syntax on
 set colorcolumn=80
 highlight ColorColumn guibg=Gray14
 
+" makefile
+" take from http://stackoverflow.com/questions/729249/how-to-efficiently-make-with-vim
+set makeprg=[[\ -f\ Makefile\ ]]\ &&\ make\ \\\|\\\|\ make\ -C\ ..
+" map <F5> :make<CR><C-w><Up>
+
 
 " ================ Search Settings  =================
 
@@ -149,10 +154,14 @@ nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Ba
 "  colorscheme molokai
 "  let g:molokai_original = 0
 
+" ==== vim-latex  ====
+  set grepprg=grep\ -nH\ $*
+  let g:tex_flavor='latex'
+
 " ==== solarized colour ====
   set background=dark
   colorscheme solarized
-  call togglebg#map("<F5>")
+  call togglebg#map("<F6>")
   " use the following line when using vim in terminal
   " let g:solarized_termcolors=256
 
