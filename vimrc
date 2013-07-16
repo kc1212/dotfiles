@@ -161,6 +161,9 @@ nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Ba
 " ==== vim-latex  ====
   set grepprg=grep\ -nH\ $*
   let g:tex_flavor='latex'
+  " the following is taken from
+  " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
+  autocmd BufRead,BufNewFile *.tex set wrap linebreak nolist textwidth=0 wrapmargin=0
 
 " ==== solarized colour ====
   set background=dark
@@ -170,7 +173,7 @@ nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Ba
   " let g:solarized_termcolors=256
 
 " == prolog mode ===
-  au BufRead,BufNewFile *.pl set filetype=prolog
+  autocmd BufRead,BufNewFile *.pl set filetype=prolog
 
 " ==== NERDTree ====
   " autocmd vimenter * NERDTree
