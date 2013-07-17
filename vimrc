@@ -165,7 +165,7 @@ let notabs = 1
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
 
 " close
-nmap <A-w> :bd<CR>:q<CR>
+nmap <A-w> :bd<CR>
 
 
 " ==================== Plugins =========================
