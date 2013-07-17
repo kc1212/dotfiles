@@ -110,14 +110,11 @@ set nofoldenable        "dont fold by default
 "set wildignore+=tmp/**
 "set wildignore+=*.png,*.jpg,*.gif
 
-"
-
 " ================ Scrolling ========================
 
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
-
 
 " ================ Key Bindings =====================
 " No arrow keys
@@ -128,8 +125,8 @@ set sidescroll=1
 
 nnoremap ; :
 
-map <C-a> GVgg
-"map <C-n> :enew
+" map <C-a> GVgg
+" map <C-n> :enew
 map <C-o> :e . <CR>
 map <C-s> :w <CR>
 imap <C-s> <Esc><C-s>
@@ -145,11 +142,30 @@ nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
+map <A-1> 1gt
+imap <A-1> <C-O>1gt " ctrl+o switches to normal mode for one command
+map <A-2> 2gt
+imap <A-2> <C-O>2gt
+map <A-3> 3gt
+imap <A-3> <C-O>3gt
+map <A-4> 4gt
+imap <A-4> <C-O>4gt
+map <A-5> 5gt
+imap <A-5> <C-O>5gt
+map <A-6> 6gt
+imap <A-6> <C-O>6gt
+map <A-7> 7gt
+imap <A-7> <C-O>7gt
+map <A-8> 8gt
+imap <A-8> <C-O>8gt
 
 " With the following, you can press F8 to show all buffers in tabs, or to
 " close all tabs (toggle: it alternately executes :tab ball and :tabo)
 let notabs = 1
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
+
+" close
+nmap <A-w> :bd<CR>:q<CR>
 
 
 " ==================== Plugins =========================
