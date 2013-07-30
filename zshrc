@@ -2,7 +2,7 @@
 [[ $- != *i* ]] && return
 
 # detect operating system, creates variable $platform
-source $HOME/dotfiles/detectOS
+source $HOME/dotfiles/detect_os
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
