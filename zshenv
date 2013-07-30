@@ -1,5 +1,5 @@
 # detects operating system, creates variable $platform
-source $HOME/dotfiles/detectOS
+source $HOME/dotfiles/detect_os
 
 # defaults
 export EDITOR=vim
@@ -15,6 +15,9 @@ if [[ $platform == 'linux' ]]; then
   export GTK_IM_MODULE=ibus
   export XMODIFIERS=@im=ibus
   export QT_IM_MODULE=ibus
+
+  # for cabal
+  export PATH=$HOME/.cabal/bin:$PATH
 
   # 32bit wine, need to use winecfg, archlinux specific
   # export WINEARCH=win32
