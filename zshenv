@@ -1,6 +1,3 @@
-# detects operating system, creates variable $platform
-source $HOME/dotfiles/detect_os
-
 # defaults
 export EDITOR=vim
 export CLICOLOR=TRUE
@@ -10,20 +7,20 @@ export CLICOLOR=TRUE
 # export GEM_PATH=$GEM_HOME
 # export PATH=$HOME/.gem/ruby/1.9.1/bin:$PATH
 
-if [[ $platform == 'linux' ]]; then
+if [[ $('uname') == 'Linux' ]]; then
   # for ibus
   export GTK_IM_MODULE=ibus
   export XMODIFIERS=@im=ibus
   export QT_IM_MODULE=ibus
 
-  # for cabal
-  export PATH=$HOME/.cabal/bin:$PATH
+  # for cabal, add after the path
+  export PATH=$PATH:$HOME/.cabal/bin
 
   # 32bit wine, need to use winecfg, archlinux specific
   # export WINEARCH=win32
   # export WINEPREFIX=~/.wine
 
-elif [[ $platform == 'darwin' ]]; then
+elif [[ $('uname') == 'Darwin' ]]; then
 
   # export PATH=/usr/gcc-4.7.2/bin:$PATH
   export PATH=/usr/local/share/python:$PATH
