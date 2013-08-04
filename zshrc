@@ -1,9 +1,6 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# detect operating system, creates variable $platform
-source $HOME/dotfiles/detect_os
-
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -11,7 +8,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME=""
+ZSH_THEME="lambda"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -40,10 +37,10 @@ DISABLE_LS_COLORS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-if  [[ $platform == 'darwin' ]]; then
-  plugins=(git)
+if  [[  $('uname') == 'Darwin' ]]; then
+  plugins=(git,pip)
 else
-  plugins=()
+  plugins=(git,pip,debian)
 fi
 
 
@@ -57,3 +54,6 @@ source $ZSH/oh-my-zsh.sh
 # disabled seahorse-ssh-askpass
 # http://kartzontech.blogspot.co.uk/2011/04/how-to-disable-gnome-ssh-askpass.html
 unset SSH_ASKPASS
+
+# set vi mode
+# set -o vi
