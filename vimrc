@@ -186,7 +186,7 @@ nmap <A-w> :bd<CR>
   colorscheme solarized
   call togglebg#map("<F6>")
   " use the following line when using vim in terminal
-  " let g:solarized_termcolors=256
+  let g:solarized_termcolors=256
 
 " == prolog mode ===
   autocmd BufRead,BufNewFile *.pl set filetype=prolog
@@ -202,6 +202,7 @@ nmap <A-w> :bd<CR>
 
 " ==== vim-powerline ====
 "
+  " set term=xterm-256color
   if has("mac") || has("gui_mac")
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
     let g:Powerline_symbols = 'fancy'

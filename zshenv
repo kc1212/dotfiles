@@ -1,6 +1,7 @@
 # defaults
 export EDITOR=vim
 export CLICOLOR=TRUE
+export TERM="xterm-256color"
 
 # ruby gem paths and variables
 # export GEM_HOME=$HOME/.gem
