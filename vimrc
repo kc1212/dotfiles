@@ -49,6 +49,7 @@ highlight ColorColumn guibg=Gray14
 set makeprg=[[\ -f\ Makefile\ ]]\ &&\ make\ \\\|\\\|\ make\ -C\ ..
 " map <F5> :make<CR><C-w><Up>
 
+set mouse=a             " enable mouse activities for all, including scrolling
 
 " ================ Search Settings  =================
 
