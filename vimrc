@@ -118,11 +118,6 @@ set sidescrolloff=15
 set sidescroll=1
 
 " ================ Key Bindings =====================
-" No arrow keys
-" map <up> <nop>
-" map <down> <nop>
-" map <left> <nop>
-" map <right> <nop>
 
 nnoremap ; :
 
@@ -159,6 +154,11 @@ map <A-7> 7gt
 imap <A-7> <C-O>7gt
 map <A-8> 8gt
 imap <A-8> <C-O>8gt
+
+" leader remap
+let mapleader = ','
+nmap <leader>d :NERDTreeToggle<CR>
+nmap <leader>f :NERDTreeFind<CR>
 
 " With the following, you can press F8 to show all buffers in tabs, or to
 " close all tabs (toggle: it alternately executes :tab ball and :tabo)
@@ -329,3 +329,14 @@ augroup JumpCursorOnEdit
             \   unlet b:doopenfold |
             \ endif
 augroup END
+
+" Fix Cursor in TMUX
+if exists('$TMUX')
+  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+
