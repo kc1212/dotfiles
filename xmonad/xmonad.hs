@@ -339,7 +339,6 @@ myStartupHook = return ()
 --
 main = do
   xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc"
-  -- xmproc <- spawnPipe "tint2 ~/.config/tint2/tint2rc"
   xmonad $ defaults {
       logHook = dynamicLogWithPP $ xmobarPP {
             ppOutput = hPutStrLn xmproc
