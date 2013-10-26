@@ -37,6 +37,3 @@
 [submodule "bash-it"]
 	path = bash-it
 	url = https://github.com/revans/bash-it.git
-[submodule "vim/bundle/lightline"]
-	path = vim/bundle/lightline
-	url = https://github.com/itchyny/lightline.vim
