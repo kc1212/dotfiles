@@ -207,21 +207,12 @@ nmap <A-w> :bd<CR>
   " Run NERDTree using :NERDTree
   " Type ? in NERDTree for help
 
-" ==== vim-powerline ====
-"
-  " set term=xterm-256color
-  if has("mac") || has("gui_mac")
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 10
-    let g:Powerline_symbols = 'fancy'
-  else
-    set guifont=DejaVu\ Sans\ Mono\ 10
-    let g:Powerline_symbols = 'compatible'
-  endif
-
-  let g:Powerline_symbols = 'compatible' " for now, set all to compatible
-  set laststatus=2   " Always show the statusline
-  set encoding=utf-8 " Necessary to show Unicode glyphs
-  " Check :help powerline
+" ==== vim-lightline ====
+set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ }
+":help lightline
 
 " ======= ctrlp =========
   let g:ctrlp_map = '<c-p>'
