@@ -105,8 +105,10 @@ if ! shopt -oq posix; then
 fi
 
 # environment variables
-if [ -f ~/.shell_env ]; then
-  source ~/.shell_env
+if [ -f ~/.bash_env ]; then
+  source ~/.bash_env
 fi
 
-
+# disabled seahorse-ssh-askpass
+# http://kartzontech.blogspot.co.uk/2011/04/how-to-disable-gnome-ssh-askpass.html
+unset SSH_ASKPASS
