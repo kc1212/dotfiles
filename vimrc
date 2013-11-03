@@ -189,6 +189,7 @@ nmap <A-w> :bd<CR>
   autocmd BufRead,BufNewFile *.tex set wrap linebreak nolist textwidth=0 wrapmargin=0
 
 " ==== solarized colour ====
+  set t_Co=256 " set number of colors
   set background=dark
   colorscheme solarized
   call togglebg#map("<F6>")
@@ -208,11 +209,11 @@ nmap <A-w> :bd<CR>
   " Type ? in NERDTree for help
 
 " ==== vim-lightline ====
-set laststatus=2
-let g:lightline = {
-      \ 'colorscheme': 'solarized',
-      \ }
-":help lightline
+  set laststatus=2
+  " let g:lightline = {
+  "       \ 'colorscheme': 'solarized',
+  "       \ }
+  " :help lightline
 
 " ======= ctrlp =========
   let g:ctrlp_map = '<c-p>'
