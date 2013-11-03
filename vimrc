@@ -47,7 +47,7 @@ highlight ColorColumn guibg=Gray14
 " makefile
 " take from http://stackoverflow.com/questions/729249/how-to-efficiently-make-with-vim
 set makeprg=[[\ -f\ Makefile\ ]]\ &&\ make\ \\\|\\\|\ make\ -C\ ..
-" map <F5> :make<CR><C-w><Up>
+map <F5> :make<CR><C-w><Up>
 
 set mouse=a             " enable mouse activities for all, including scrolling
 
@@ -176,11 +176,6 @@ nmap <A-w> :bd<CR>
 
 
 " ==================== Plugins =========================
-"" ======== molokai =========
-"  set background=dark
-"  colorscheme molokai
-"  let g:molokai_original = 0
-
 " ==== vim-latex  ====
   set grepprg=grep\ -nH\ $*
   let g:tex_flavor='latex'
@@ -192,7 +187,7 @@ nmap <A-w> :bd<CR>
   set t_Co=256 " set number of colors
   set background=dark
   colorscheme solarized
-  call togglebg#map("<F6>")
+  " call togglebg#map("<F6>")
   " use the following line when using vim in terminal
   let g:solarized_termcolors=256
 

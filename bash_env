@@ -31,3 +31,21 @@ elif [[ $('uname') == 'Darwin' ]]; then
 
 fi
 
+# some useful functions, take from archwiki
+
+# calculator
+calc() {
+    echo "scale=3;$@" | bc -l
+}
+
+# cd and ls in one
+cl() {
+    if [[ -d "$1" ]]; then
+        cd "$1"
+        ls
+    else
+        echo "bash: cl: '$1': Directory not found"
+    fi
+}
+
+

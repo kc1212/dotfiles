@@ -4,9 +4,6 @@
 [submodule "vim/bundle/prolog.vim"]
 	path = vim/bundle/prolog.vim
 	url = git://github.com/adimit/prolog.vim.git
-[submodule "vim/bundle/molokai"]
-	path = vim/bundle/molokai
-	url = git://github.com/tomasr/molokai.git
 [submodule "vim/bundle/solarized"]
 	path = vim/bundle/solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
