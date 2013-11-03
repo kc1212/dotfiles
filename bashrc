@@ -84,11 +84,6 @@ if [ -x /usr/bin/dircolors ]; then
     #alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -A'
-#alias l='ls -CF'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -109,7 +104,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# load bash_profile
-source ~/.bash_profile
-source ~/.zshenv
-alias ll='ls -lh' # override
+# environment variables
+if [ -f ~/.shell_env ]; then
+  source ~/.shell_env
+fi
+
+

@@ -7,13 +7,11 @@ all:
 	ln -s ~/dotfiles/vimrc ~/.vimrc
 	ln -s ~/dotfiles/gvimrc ~/.gvimrc
 
-	# link zsh files
-	# ln -s ~/dotfiles/oh-my-zsh/ ~/.oh-my-zsh
-	# ln -s ~/dotfiles/zshrc ~/.zshrc
-	# ln -s ~/dotfiles/zshenv ~/.zshenv
-	ln -s ~/dotfiles/bash-it/ ~/.bash-it
+	# link bash files
 	ln -s ~/dotfiles/bashrc ~/.bashrc
-	ln -s ~/dotfiles/zshenv ~/.zshenv
+	ln -s ~/dotfiles/bash_aliases ~/.bash_aliases
+	ln -s ~/dotfiles/bash_logout ~/.bash_logout
+	ln -s ~/dotfiles/shell_env ~/.shell_env
 
 	# link git files
 	ln -s ~/dotfiles/gitconfig ~/.gitconfig
@@ -25,7 +23,7 @@ all:
 	# note: place '/' at the end of path for directories
 	# i.e. use ~/dotfiles/vim/ rather than ~/dotfiles/vim
 
-linux:
+xmonad:
 	# xmonad files
 	ln -s ~/dotfiles/xmonad ~/.xmonad
 	ln -s ~/dotfiles/Xresources ~/.Xresources
