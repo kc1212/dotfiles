@@ -106,8 +106,11 @@
 ! URxvt*color14:                 S_base1
 ! URxvt*color15:                 S_base3
 
-! Every shell is a login shell by default (for inclusion of all necessary environment variables)
-xterm*loginshell: true
+! use xterm and login shell?
+xterm*loginshell: false
+
+! use alt as meta key?
+xterm*metaSendsEscape: true
 
 ! xterm, font, saved lines
 xterm*faceName: DejaVu Sans Mono:pixelsize=12;antialias=true;hinting=true
