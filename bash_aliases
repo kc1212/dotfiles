@@ -10,6 +10,7 @@ alias mkdir='mkdir -p -v'
 alias nano='nano -w'
 # alias ping='ping -c 5'
 alias dmesg='dmesg -HL'
+alias tmux="TERM=screen-256color-bce tmux"
 # }}}
 
 ## New commands ## {{{
