@@ -6,7 +6,7 @@ submodule:
 
 lvim:
 	# link vim files
-	ln -s ~/dotfiles/vim/ ~/.vim
+	ln -s ~/dotfiles/vim ~/.vim
 	ln -s ~/dotfiles/vimrc ~/.vimrc
 	ln -s ~/dotfiles/gvimrc ~/.gvimrc
 
@@ -16,7 +16,7 @@ lbash:
 	ln -s ~/dotfiles/bash_aliases ~/.bash_aliases
 	ln -s ~/dotfiles/bash_logout ~/.bash_logout
 	ln -s ~/dotfiles/bash_profile ~/.bash_profile
-	ln -s ~/dotfiles/shell_env ~/.shell_env
+	ln -s ~/dotfiles/bash_env ~/.bash_env
 
 lgit:
 	# link git files

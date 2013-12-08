@@ -10,9 +10,14 @@ export TERM="xterm-256color"
 
 if [[ $('uname') == 'Linux' ]]; then
   # for ibus
-  export GTK_IM_MODULE=ibus
-  export XMODIFIERS=@im=ibus
-  export QT_IM_MODULE=ibus
+  # export GTK_IM_MODULE=ibus
+  # export XMODIFIERS="@im=ibus"
+  # export QT_IM_MODULE=ibus
+
+  # for fcitx
+  export GTK_IM_MODULE=fcitx
+  export XMODIFIERS="@im=fcitx"
+  export QT_IM_MODULE=fcitx
 
   # for cabal, add after the path
   export PATH=$PATH:$HOME/.cabal/bin
