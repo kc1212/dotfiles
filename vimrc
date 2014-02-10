@@ -56,6 +56,7 @@ set mouse=a             " enable mouse activities for all, including scrolling
 set incsearch        "Find the next match as we type the search
 " set hlsearch         "Hilight searches by default
 set viminfo='100,f1  "Save up to 100 marks, enable capital marks
+set tags=./tags;/    "set the ctags search directory
 
 " ================ Turn Off Swap Files ==============
 
@@ -139,7 +140,7 @@ xmap <Down> gj
 xmap <Up> gk
 
 " tabs
-map <C-t> :tabnew <Enter>
+map <C-t> :tabnew <CR>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
@@ -173,6 +174,12 @@ nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Ba
 
 " close
 nmap <A-w> :bd<CR>
+
+" ctags stuff
+" adapted from http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
+nmap <A-]> :pop<CR>
+nmap <C-F8> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 
 " ==================== Plugins =========================
