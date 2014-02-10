@@ -1,23 +1,23 @@
 # defaults
-export EDITOR=vim
-export CLICOLOR=TRUE
-export TERM="xterm-256color"
+  export EDITOR=vim
+  export CLICOLOR=TRUE
+  # export TERM="xterm-256color" # not recommended by tmux
 
 # ruby gem paths and variables
 # export GEM_HOME=$HOME/.gem
 # export GEM_PATH=$GEM_HOME
 # export PATH=$HOME/.gem/ruby/1.9.1/bin:$PATH
 
-if [[ $('uname') == 'Linux' ]]; then
+  if [[ $('uname') == 'Linux' ]]; then
   # for ibus
-  # export GTK_IM_MODULE=ibus
-  # export XMODIFIERS="@im=ibus"
-  # export QT_IM_MODULE=ibus
+  export GTK_IM_MODULE=ibus
+  export XMODIFIERS="@im=ibus"
+  export QT_IM_MODULE=ibus
 
   # for fcitx
-  export GTK_IM_MODULE=fcitx
-  export XMODIFIERS="@im=fcitx"
-  export QT_IM_MODULE=fcitx
+  # export GTK_IM_MODULE=fcitx
+  # export XMODIFIERS="@im=fcitx"
+  # export QT_IM_MODULE=fcitx
 
   # for cabal, add after the path
   export PATH=$PATH:$HOME/.cabal/bin
