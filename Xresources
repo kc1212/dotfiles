@@ -120,10 +120,16 @@ xterm*saveLines: 4096
 xterm*rightScrollBar: true
 xterm*ScrollBar: true
 
+! fix color schemes for programs such as vim
+xterm*termName: xterm-256color
+
 ! stop output to terminal from jumping down to bottom of scroll again
 xterm*scrollTtyOutput: false
 
-! clipboard 
+! make xterm interpret all incoming data as UTF-8 encoded
+xterm*locale: true
+
+! clipboard
 xterm*vt100.translations: #override \
         Shift <KeyPress> Up:      scroll-back(1, line) \n\
         Shift <KeyPress> Down:    scroll-forw(1, line) \n\
@@ -203,3 +209,5 @@ xscreensaver.Dialog.shadowThickness:    2
 xscreensaver.passwd.thermometer.foreground:  #101010
 xscreensaver.passwd.thermometer.background:  #2E2E2E
 xscreensaver.passwd.thermometer.width:       8
+
+
