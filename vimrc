@@ -183,13 +183,6 @@ nmap <C-F8> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 
 " ==================== Plugins =========================
-" ==== vim-latex  ====
-  set grepprg=grep\ -nH\ $*
-  let g:tex_flavor='latex'
-  " the following is taken from
-  " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
-  autocmd BufRead,BufNewFile *.tex set wrap linebreak nolist textwidth=0 wrapmargin=0
-
 " ==== solarized colour ====
   set t_Co=256 " set number of colors
   set background=dark
