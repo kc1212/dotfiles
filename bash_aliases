@@ -1,8 +1,17 @@
 # taken from https://wiki.archlinux.org/index.php/Bash
 
+# enable color support
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls -hF --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
 ## Modified commands ## {{{
 # alias diff='colordiff'              # requires colordiff package
-alias grep='grep --color=auto'
+# alias grep='grep --color=auto'
 alias more='less'
 alias df='df -h'
 alias du='du -c -h'
@@ -35,7 +44,7 @@ if [ $UID -ne 0 ]; then
 fi
 
 ## ls ## {{{
-alias ls='ls -hF --color=auto'
+# alias ls='ls -hF --color=auto'
 alias lr='ls -R'                    # recursive ls
 alias ll='ls -lh'
 alias la='ll -A'
