@@ -181,6 +181,10 @@ nmap <A-]> :pop<CR>
 nmap <C-F8> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
+" wrap lines for *.tex files, taken from:
+" http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
+autocmd BufRead,BufNewFile *.tex set wrap linebreak nolist textwidth=0 wrapmargin=0
+
 
 " ==================== Plugins =========================
 " ==== solarized colour ====
