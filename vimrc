@@ -172,13 +172,10 @@ nmap <leader>f :NERDTreeFind<CR>
 let notabs = 1
 nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
 
-" close
-nmap <A-w> :bd<CR>
-
 " ctags stuff
 " adapted from http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 nmap <A-]> :pop<CR>
-nmap <C-F8> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+nmap <F3> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " wrap lines for *.tex files, taken from:
