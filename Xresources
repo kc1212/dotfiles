@@ -111,6 +111,7 @@ xterm*loginshell: false
 
 ! use alt as meta key?
 xterm*metaSendsEscape: false
+xterm*eightBitInput: true
 
 ! xterm, font, saved lines
 xterm*faceName: DejaVu Sans Mono:pixelsize=12;antialias=true;hinting=true
