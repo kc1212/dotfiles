@@ -31,6 +31,7 @@ set showmatch                   "Show matching brackets
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
+set lazyredraw                  " Don't redraw while executing macros (good performance config)
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -47,14 +48,14 @@ highlight ColorColumn guibg=Gray14
 " makefile
 " take from http://stackoverflow.com/questions/729249/how-to-efficiently-make-with-vim
 set makeprg=[[\ -f\ Makefile\ ]]\ &&\ make\ \\\|\\\|\ make\ -C\ ..
-map <F5> :make<CR><C-w><Up>
+" map <F5> :make<CR><C-w><Up>
 
 set mouse=a             " enable mouse activities for all, including scrolling
 
 " ================ Search Settings  =================
 
 set incsearch        "Find the next match as we type the search
-" set hlsearch         "Hilight searches by default
+set hlsearch         "Hilight searches by default, use :noh to reset
 set viminfo='100,f1  "Save up to 100 marks, enable capital marks
 set tags=./tags;/    "set the ctags search directory
 
@@ -205,7 +206,7 @@ autocmd BufRead,BufNewFile *.tex\|*.txt set wrap linebreak nolist textwidth=0 wr
   " Type ? in NERDTree for help
 
 " ==== vim-lightline ====
-  set laststatus=2
+  " set laststatus=2
   " let g:lightline = {
   "       \ 'colorscheme': 'solarized',
   "       \ }
@@ -214,7 +215,9 @@ autocmd BufRead,BufNewFile *.tex\|*.txt set wrap linebreak nolist textwidth=0 wr
 " ======= ctrlp =========
   let g:ctrlp_map = '<c-p>'
   let g:ctrlp_cmd = 'CtrlP'
-  "Check :help ctrlp-options for other options.
+  let g:ctrlp_working_path_mode = 'ra'
+  " Check :help ctrlp-options for other options.
+  " http://kien.github.io/ctrlp.vim/
 
 " ===== neocomplcache ===
   " Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
