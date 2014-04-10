@@ -1,4 +1,5 @@
 --recurse=yes
 --tag-relative=yes
+--extra=+f
 --exclude=.git
 --exclude=.svn
