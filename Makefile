@@ -28,11 +28,14 @@ ltmux:
 	ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 
 lresources:
+	# note: place '/' at the end of path for directories
+	# i.e. use ~/dotfiles/vim/ rather than ~/dotfiles/vim
 	ln -s ~/dotfiles/Xresources ~/.Xresources
 	xrdb ~/.Xresources
 
-	# note: place '/' at the end of path for directories
-	# i.e. use ~/dotfiles/vim/ rather than ~/dotfiles/vim
+lctags:
+	ln -s ~/dotfiles/ctags ~/.ctags
+
 
 clean:
 	# nothing here
