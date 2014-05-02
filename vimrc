@@ -141,9 +141,9 @@ xmap <Down> gj
 xmap <Up> gk
 
 " tabs
-map <C-t> :tabnew <CR>
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
+" map <C-t> :tabnew <CR> " C-t used for ctags
+" nnoremap <C-Left> :tabprevious<CR> " use gt and gT
+" nnoremap <C-Right> :tabnext<CR>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 map <A-1> 1gt
@@ -165,8 +165,6 @@ imap <A-8> <C-O>8gt
 
 " leader remap
 let mapleader = ','
-nmap <leader>d :NERDTreeToggle<CR>
-nmap <leader>f :NERDTreeFind<CR>
 
 " With the following, you can press F8 to show all buffers in tabs, or to
 " close all tabs (toggle: it alternately executes :tab ball and :tabo)
@@ -175,7 +173,7 @@ nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Ba
 
 " ctags stuff
 " adapted from http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
-nmap <A-]> :pop<CR>
+nmap <C-[> :pop<CR>
 nmap <F3> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
@@ -219,6 +217,10 @@ autocmd BufRead,BufNewFile *.tex\|*.txt set wrap linebreak nolist textwidth=0 wr
   " Check :help ctrlp-options for other options.
   " http://kien.github.io/ctrlp.vim/
 
+
+" ======= tagbar ========
+  nnoremap <silent> <Leader>b :TagbarToggle<CR>
+
 " ===== neocomplcache ===
   " Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
   " let g:acp_enableAtStartup = 0
@@ -253,6 +255,8 @@ autocmd BufRead,BufNewFile *.tex\|*.txt set wrap linebreak nolist textwidth=0 wr
   smap <C-k>     <Plug>(neocomplcache_snippets_expand)
   inoremap <expr><C-g>     neocomplcache#undo_completion()
   inoremap <expr><C-l>     neocomplcache#complete_common_string()
+  nmap <leader>d :NERDTreeToggle<CR>
+  nmap <leader>f :NERDTreeFind<CR>
 
   " SuperTab like snippets behavior.
   "imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
