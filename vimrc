@@ -1,6 +1,6 @@
 " CREDIT TO dotfiles
 " this .vimrc is taken from https://github.com/skwp/dotfiles/blob/master/vimrc
-" Modified by kc to enable more plugin support
+" Modified by kc
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
@@ -16,9 +16,9 @@ endif
 " This loads all the plugins in ~/.vim/bundle
 " Use tpope's pathogen plugin to manage all other plugins
 
-  runtime bundle/tpope-vim-pathogen/autoload/pathogen.vim
-  call pathogen#infect()
-  call pathogen#helptags()
+runtime bundle/tpope-vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+call pathogen#helptags()
 
 " ================ General Config ====================
 
@@ -125,10 +125,10 @@ nnoremap ; :
 
 " map <C-a> GVgg
 " map <C-n> :enew
-map <C-o> :e . <CR>
-map <C-s> :w <CR>
-imap <C-s> <Esc><C-s>
-map <C-c> y
+" map <C-o> :e . <CR>
+" map <C-s> :w <CR>
+" imap <C-s> <Esc><C-s>
+" map <C-c> y
 
 " moving in wraped text, nmap = normal mode map
 nmap j gj
@@ -176,7 +176,7 @@ nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Ba
 " ctags stuff
 " adapted from http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 nmap <A-]> :pop<CR>
-nmap <F2> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+nmap <F3> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " f4 src hdr toogle based on ctags, need to be generalised
@@ -209,10 +209,10 @@ autocmd BufRead,BufNewFile *.tex\|*.txt set wrap linebreak nolist textwidth=0 wr
   " Type ? in NERDTree for help
 
 " ==== vim-lightline ====
-  " set laststatus=2
-  " let g:lightline = {
-  "       \ 'colorscheme': 'solarized',
-  "       \ }
+  set laststatus=2
+  let g:lightline = {
+    \ 'colorscheme': 'solarized',
+    \ }
   " :help lightline
 
 " ======= ctrlp =========
