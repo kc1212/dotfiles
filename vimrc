@@ -141,9 +141,9 @@ xmap <Down> gj
 xmap <Up> gk
 
 " tabs
-map <C-t> :tabnew <CR>
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
+" map <C-t> :tabnew <CR>
+" nnoremap <C-Left> :tabprevious<CR>
+" nnoremap <C-Right> :tabnext<CR>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
 map <A-1> 1gt
@@ -176,8 +176,11 @@ nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Ba
 " ctags stuff
 " adapted from http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 nmap <A-]> :pop<CR>
-nmap <F3> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+nmap <F2> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
+" f4 src hdr toogle based on ctags, need to be generalised
+map <F4> :exec("tag ".expand("%:t:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,"))<CR>
 
 " wrap lines for *.tex or *.txt files, taken from:
 " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
