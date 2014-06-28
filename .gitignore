@@ -7,3 +7,9 @@
 vim/backups/
 *.swp
 .netrwhist
+
+config/ranger/bookmarks
+config/ranger/history
+config/ranger/tagged
+
+
