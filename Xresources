@@ -110,16 +110,17 @@
 xterm*loginshell: false
 
 ! use alt as meta key?
-xterm*metaSendsEscape: false
-xterm*eightBitInput: true
+! xterm*metaSendsEscape: false
+xterm*altIsNotMeta: false
+xterm*eightBitInput: false
 
 ! xterm, font, saved lines
 xterm*faceName: DejaVu Sans Mono:pixelsize=12;antialias=true;hinting=true
 xterm*saveLines: 4096
 
 ! right hand side scrollbar...
-xterm*rightScrollBar: true
-xterm*ScrollBar: true
+! xterm*rightScrollBar: true
+! xterm*ScrollBar: true
 
 ! fix color schemes for programs such as vim
 xterm*termName: xterm-256color
@@ -129,11 +130,10 @@ xterm*scrollTtyOutput: false
 
 ! enable utf8
 xterm*utf8: 1
-
-! make xterm interpret all incoming data as UTF-8 encoded
 xterm*locale: true
 
 ! clipboard
+xterm*cutToBeginningOfLine: true
 xterm*vt100.translations: #override \
         Shift <KeyPress> Up:      scroll-back(1, line) \n\
         Shift <KeyPress> Down:    scroll-forw(1, line) \n\
