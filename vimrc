@@ -123,6 +123,12 @@ set sidescroll=1
 
 nnoremap ; :
 
+" map escape sequence to alt, works for gvim?
+for i in range(48,57) + range(65,90) + range(97,122)
+  let c = nr2char(i)
+  exec "set <A-".c.">=\e".c
+endfor
+
 " map <C-a> GVgg
 " map <C-n> :enew
 " map <C-o> :e . <CR>
