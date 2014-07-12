@@ -128,6 +128,7 @@ for i in range(48,57) + range(65,90) + range(97,122)
   let c = nr2char(i)
   exec "set <A-".c.">=\e".c
 endfor
+set timeoutlen=1000 ttimeoutlen=0
 
 " map <C-a> GVgg
 " map <C-n> :enew
