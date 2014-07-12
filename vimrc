@@ -187,6 +187,7 @@ nmap <F3> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " f4 src hdr toogle based on ctags, need to be generalised
+" TODO keep cursor position after switching to or back from existing file
 map <F4> :exec("tag ".expand("%:t:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,"))<CR>
 
 " wrap lines for *.tex or *.txt files, taken from:
