@@ -122,7 +122,7 @@ xterm*saveLines: 4096
 
 ! right hand side scrollbar...
 ! xterm*rightScrollBar: true
-! xterm*ScrollBar: true
+xterm*ScrollBar: false
 
 ! fix color schemes for programs such as vim
 xterm*termName: xterm-256color
