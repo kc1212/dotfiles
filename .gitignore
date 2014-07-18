@@ -5,6 +5,7 @@
 *.log
 
 vim/backups/
+vim/bundle/
 *.swp
 .netrwhist
 
