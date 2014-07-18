@@ -21,6 +21,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'itchyny/lightline.vim'
 
+call vundle#end()
 filetype plugin indent on
 
 " ================ General Config ====================

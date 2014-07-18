@@ -1,9 +1,3 @@
-[submodule "vim/bundle/prolog.vim"]
-	path = vim/bundle/prolog.vim
-	url = git://github.com/adimit/prolog.vim.git
-[submodule "solarized"]
-	path = solarized
-	url = git://github.com/altercation/solarized.git
 [submodule "vim/bundle/Vundle.vim"]
 	path = vim/bundle/Vundle.vim
 	url = https://github.com/gmarik/Vundle.vim.git
