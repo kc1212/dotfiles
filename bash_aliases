@@ -57,7 +57,7 @@ alias lm='la | more'
 ## Safety features ## {{{
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='rm -I'                    # 'rm -i' prompts for every file
+# alias rm='rm -I'                    # 'rm -i' prompts for every file
 # safer alternative w/ timeout, not stored in history
 alias rm=' timeout 3 rm -Iv --one-file-system'
 alias ln='ln -i'
