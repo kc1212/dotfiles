@@ -70,11 +70,11 @@ URxvt*loginShell: false
 ! URxvt.pasteCommand:  xsel -ob
 
 ! for solving vim tab problem
-! https://bbs.archlinux.org/viewtopic.php?id=71462 
-URxvt.keysym.Control-Up: \033[1;5A
-URxvt.keysym.Control-Down: \033[1;5B
-URxvt.keysym.Control-Left: \033[1;5D
-URxvt.keysym.Control-Right: \033[1;5C
+! https://bbs.archlinux.org/viewtopic.php?id=71462
+! URxvt.keysym.Control-Up: \033[1;5A
+! URxvt.keysym.Control-Down: \033[1;5B
+! URxvt.keysym.Control-Left: \033[1;5D
+! URxvt.keysym.Control-Right: \033[1;5C
 
 
 ! To only apply colors to your terminal, for example, prefix
@@ -112,9 +112,9 @@ URxvt*color15:                 S_base3
 xterm*loginshell: false
 
 ! use alt as meta key?
-! xterm*metaSendsEscape: false
-xterm*altIsNotMeta: false
-xterm*eightBitInput: false
+! xterm*altIsNotMeta: false
+xterm*metaSendsEscape: true
+xterm*eightBitInput: true
 
 ! xterm, font, saved lines
 xterm*faceName: DejaVu Sans Mono:pixelsize=12;antialias=true;hinting=true
