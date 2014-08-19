@@ -140,8 +140,9 @@ set timeoutlen=1000 ttimeoutlen=0
 
 nnoremap ; :
 
-" don't move cursor after pressing *
+" don't move cursor after pressing * or #
 nnoremap * *<C-o>
+nnoremap # #<C-o>
 
 " map <C-a> GVgg
 " map <C-n> :enew
