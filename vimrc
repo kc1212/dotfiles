@@ -28,7 +28,9 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'Shougo/neocomplete.vim' " need to have lua enabled, try install vim-youcompleteme package with vim-gtk
 
 call vundle#end()
-filetype plugin indent on
+
+filetype plugin on
+filetype indent on
 
 " ================ General Config ====================
 
@@ -91,10 +93,10 @@ set smarttab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-" set expandtab
+set expandtab
 
-filetype plugin on
-filetype indent on
+" exception for c/cpp source files, alternatively use ftplugin
+autocmd BufRead,BufNewFile *.c,*.cpp,*.h,*.hpp, set sw=8 sts=8 ts=8 noic cin noexpandtab
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
