@@ -202,10 +202,6 @@ nmap <A-]> :pop<CR>
 nmap <F3> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-" f4 src hdr toogle based on ctags, need to be generalised
-" TODO keep cursor position after switching to or back from existing file
-map <F4> :exec("tag ".expand("%:t:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,"))<CR>
-
 " wrap lines for *.tex or *.txt files, taken from:
 " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
 autocmd BufRead,BufNewFile *.tex\|*.txt set wrap linebreak nolist textwidth=0 wrapmargin=0
@@ -362,6 +358,23 @@ augroup JumpCursorOnEdit
             \   unlet b:doopenfold |
             \ endif
 augroup END
+
+" Switch between source and header, requires ctags
+" TODO need to keep cursor position
+" perhaps find file path (cscope?) and do :e, leveraging on JumpCursorOnEdit
+function! SwitchSourceHeader()
+  if (expand ("%:e") == "cpp")
+    exec "tag /^" . expand("%:t:r") . "\\.h\\(pp\\)\\?$"
+    " exec "JumpCursorOnEdit_foo"
+  elseif (expand ("%:e") == "c")
+    exec "tag " . expand("%:t:r") . ".h"
+  elseif (expand ("%:e") == "hpp")
+    exec "tag " . expand("%:t:r") . ".cpp"
+  elseif (expand ("%:e") == "h")
+    exec "tag /^" . expand("%:t:r") . "\\.c\\(pp\\)\\?$"
+  endif
+endfunction
+nmap <f4> :call SwitchSourceHeader()<CR>
 
 " Fix Cursor in TMUX
 " if exists('$TMUX')
