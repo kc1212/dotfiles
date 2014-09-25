@@ -8,7 +8,7 @@ fi
 
 filename=$1
 
-if [ -f $filename ]
+if [ -f $filename ] || [ -d $filename ]
 then
 	mv $filename ${filename}.bak
 	echo "backup performed on $filename"
