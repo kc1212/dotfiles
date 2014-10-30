@@ -26,6 +26,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'itchyny/lightline.vim'
 Plugin 'Shougo/neocomplete.vim' " need to have lua enabled, try install vim-youcompleteme package with vim-gtk
+Plugin 'scrooloose/syntastic' " make sure external syntax checkers are installed, e.g. hlint
 
 call vundle#end()
 
