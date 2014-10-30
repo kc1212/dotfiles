@@ -209,12 +209,9 @@ autocmd BufRead,BufNewFile *.tex\|*.txt set wrap linebreak nolist textwidth=0 wr
 
 " ==================== Plugins =========================
 " ==== solarized colour ====
-  set t_Co=256 " set number of colors
   set background=dark
   colorscheme solarized
   " call togglebg#map("<F6>")
-  " use the following line when using vim in terminal
-  let g:solarized_termcolors=256
 
 " == prolog mode ===
   autocmd BufRead,BufNewFile *.pl set filetype=prolog
@@ -239,8 +236,14 @@ autocmd BufRead,BufNewFile *.tex\|*.txt set wrap linebreak nolist textwidth=0 wr
   let g:ctrlp_map = '<c-p>'
   let g:ctrlp_cmd = 'CtrlP'
   let g:ctrlp_working_path_mode = 'ra'
+  let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+    \ 'file': '\v\.(exe|so|dll|o|hi)$',
+    \ 'link': 'some_bad_symbolic_links',
+    \ }
   " Check :help ctrlp-options for other options.
   " http://kien.github.io/ctrlp.vim/
+
 
 " ====== neocomplete ====
 " taken from https://github.com/Shougo/neocomplete.vim
