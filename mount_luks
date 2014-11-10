@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# make sure cryptosetup is installed and relevant kernel modules loaded
+# make sure the loop module is loaded and configured by doing:
+# echo loop > /etc/modules-load.d/loop.conf
+# echo  "options loop max_loop=10" > /etc/modprobe.d/loop.conf
+
+# one can setup an encrypted volume using cryptsetup luksFormat, details see:
+# https://www.digitalocean.com/community/tutorials/how-to-use-dm-crypt-to-create-an-encrypted-volume-on-an-ubuntu-vps
+
+# usage: mount_luks <filename>
+
+set -x
+set -e
+
+if [ "$#" -ne 1 ]; then
+    echo "Missing argument"
+    exit 1
+fi
+
+file_name=$1
+vol_name="$(basename $1)_volume"
+mnt_name="/mnt/$(basename $file_name)"
+
+cryptsetup luksOpen $file_name $vol_name
+mkdir -p $mnt_name
+mount -t ext4 /dev/mapper/$vol_name $mnt_name
+chown 1000:1000 $mnt_name # TODO 1000 might not always be valid
+
+
+
