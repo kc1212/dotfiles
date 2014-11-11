@@ -27,7 +27,7 @@ input_name=$2
 vol_name="$(basename $2)_volume"
 
 if [ "$cmd" == "mount" ]; then
-    local mnt_name="/mnt/$(basename $input_name)"
+    mnt_name="/mnt/$(basename $input_name)"
     cryptsetup luksOpen $input_name $vol_name
     mkdir -p $mnt_name
     mount -t ext4 /dev/mapper/$vol_name $mnt_name
