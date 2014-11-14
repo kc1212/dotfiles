@@ -8,7 +8,7 @@
 # export GEM_PATH=$GEM_HOME
 # export PATH=$HOME/.gem/ruby/1.9.1/bin:$PATH
 
-  if [[ $('uname') == 'Linux' ]]; then
+if [[ $('uname') == 'Linux' ]]; then
   # for ibus
   export GTK_IM_MODULE=ibus
   export XMODIFIERS="@im=ibus"
@@ -52,5 +52,8 @@ cl() {
         echo "bash: cl: '$1': Directory not found"
     fi
 }
+
+# use vimx if it exists
+which vimx 2>&1 > /dev/null && alias vim=vimx
 
 
