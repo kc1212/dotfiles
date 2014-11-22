@@ -20,7 +20,7 @@ if [[ $('uname') == 'Linux' ]]; then
   # export QT_IM_MODULE=fcitx
 
   # for cabal, add after the path
-  export PATH=$PATH:$HOME/.cabal/bin
+  export PATH=$HOME/.cabal/bin:$PATH
 
   # 32bit wine, need to use winecfg, archlinux specific
   # export WINEARCH=win32
