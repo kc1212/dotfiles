@@ -54,6 +54,6 @@ cl() {
 }
 
 # use vimx if it exists
-which vimx 2>&1 > /dev/null && alias vim=vimx
+which vimx > /dev/null 2>&1 && alias vim=vimx
 
 
