@@ -24,7 +24,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'scrooloose/nerdtree'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'itchyny/lightline.vim'
+" Plugin 'itchyny/lightline.vim'
 Plugin 'Shougo/neocomplete.vim' " need to have lua enabled, try install vim-youcompleteme package with vim-gtk
 Plugin 'scrooloose/syntastic' " make sure external syntax checkers are installed, e.g. hlint
 
@@ -226,12 +226,12 @@ autocmd BufRead,BufNewFile *.tex\|*.txt set wrap linebreak nolist textwidth=0 wr
   " Run NERDTree using :NERDTree
   " Type ? in NERDTree for help
 
-" ==== vim-lightline ====
-  set laststatus=2
-  let g:lightline = {
-    \ 'colorscheme': 'solarized',
-    \ }
-  " :help lightline
+" " ==== vim-lightline ====
+"   set laststatus=2
+"   let g:lightline = {
+"     \ 'colorscheme': 'solarized',
+"     \ }
+"   " :help lightline
 
 " ======= ctrlp =========
   let g:ctrlp_map = '<c-p>'

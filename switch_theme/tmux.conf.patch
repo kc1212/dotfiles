@@ -1,0 +1,34 @@
+diff --git a/tmux.conf b/tmux.conf
+index 66b4385..ec8f8f4 100644
+--- a/tmux.conf
++++ b/tmux.conf
+@@ -82,20 +82,20 @@ set-option -g message-fg black
+ ##+ status bar:
+ set-option -g status-utf8 on
+ set-option -g status-justify right
+-set-option -g status-bg '#0e0e0e'
+-set-option -g status-fg '#333333'
++set-option -g status-bg '#fcfcfc'
++set-option -g status-fg '#7e7e7e'
+ set-option -g status-interval 5
+ set-option -g status-left-length 60
+-set-option -g status-left '#[fg=#333333]## #[fg=#008080]#T#[default]'
+-set-option -g status-right '#[fg=#008080]#S:#P#[default]'
++set-option -g status-left '#[fg=#7e7e7e]## #[fg=#000000]#T#[default]'
++set-option -g status-right '#[fg=#000000]#S:#P#[default]'
+ set-option -g visual-activity on
+ set-window-option -g monitor-activity on
+-set-window-option -g window-status-current-bg '#0e0e0e'
+-set-window-option -g window-status-current-fg '#008080'
+-set-window-option -g window-status-bg '#0e0e0e'
+-set-window-option -g window-status-fg '#333333'
++set-window-option -g window-status-current-bg '#fcfcfc'
++set-window-option -g window-status-current-fg '#000000'
++set-window-option -g window-status-bg '#fcfcfc'
++set-window-option -g window-status-fg '#7e7e7e'
+ 
+ ##+ pane pane border
+-set-option -g pane-active-border-fg '#008080'
++set-option -g pane-active-border-fg '#000000'
+ 
+ 
