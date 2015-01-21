@@ -133,6 +133,8 @@ set sidescrolloff=15
 set sidescroll=1
 
 " ================ Key Bindings =====================
+" TODO probably bad to use recursive mapping, see:
+" http://learnvimscriptthehardway.stevelosh.com/chapters/05.html
 
 " map escape sequence to alt, works for gvim?
 for i in range(48,57) + range(65,90) + range(97,122)
@@ -207,6 +209,8 @@ nmap <F3> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
 autocmd BufRead,BufNewFile *.tex\|*.txt set wrap linebreak nolist textwidth=0 wrapmargin=0
 
+" unmap ex mode
+nnoremap Q <Nop>
 
 " ==================== Plugins =========================
 " ==== solarized colour ====
