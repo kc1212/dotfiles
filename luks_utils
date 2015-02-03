@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # make sure cryptosetup is installed and relevant kernel modules loaded
 # make sure the loop module is loaded and configured by doing:
