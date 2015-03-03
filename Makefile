@@ -1,50 +1,52 @@
-all: lvim lbash lgit ltmux lresources lctags
+.PHONY: all submodule vim bash git tmux resources ctags clean_backup
+
+all: vim bash git tmux resources ctags
 	# do everything other than submodule
 
 submodule:
 	cd ~/dotfiles && git submodule init && git submodule update
 
-lvim:
-	~/dotfiles/do_backup ~/.vim
-	~/dotfiles/do_backup ~/.vimrc
-	~/dotfiles/do_backup ~/.gvimrc
+vim:
+	~/dotfiles/scripts/do_backup ~/.vim
+	~/dotfiles/scripts/do_backup ~/.vimrc
+	~/dotfiles/scripts/do_backup ~/.gvimrc
 	ln -s ~/dotfiles/vim ~/.vim
 	ln -s ~/dotfiles/vimrc ~/.vimrc
 	ln -s ~/dotfiles/gvimrc ~/.gvimrc
 	# vim +PluginInstall +qall
 
 
-lbash:
-	~/dotfiles/do_backup ~/.bashrc
-	~/dotfiles/do_backup ~/.bash_aliases
-	~/dotfiles/do_backup ~/.bash_logout
-	~/dotfiles/do_backup ~/.bash_profile
-	~/dotfiles/do_backup ~/.bash_env
+bash:
+	~/dotfiles/scripts/do_backup ~/.bashrc
+	~/dotfiles/scripts/do_backup ~/.bash_aliases
+	~/dotfiles/scripts/do_backup ~/.bash_logout
+	~/dotfiles/scripts/do_backup ~/.bash_profile
+	~/dotfiles/scripts/do_backup ~/.bash_env
 	ln -s ~/dotfiles/bashrc ~/.bashrc
 	ln -s ~/dotfiles/bash_aliases ~/.bash_aliases
 	ln -s ~/dotfiles/bash_logout ~/.bash_logout
 	ln -s ~/dotfiles/bash_profile ~/.bash_profile
 	ln -s ~/dotfiles/bash_env ~/.bash_env
 
-lgit:
-	~/dotfiles/do_backup ~/.gitconfig
-	~/dotfiles/do_backup ~/.gitignore_global
+git:
+	~/dotfiles/scripts/do_backup ~/.gitconfig
+	~/dotfiles/scripts/do_backup ~/.gitignore_global
 	ln -s ~/dotfiles/gitconfig ~/.gitconfig
 	ln -s ~/dotfiles/gitignore_global ~/.gitignore_global
 
-ltmux:
-	~/dotfiles/do_backup ~/.tmux.conf
+tmux:
+	~/dotfiles/scripts/do_backup ~/.tmux.conf
 	ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 
-lresources:
+resources:
 	# note: place '/' at the end of path for directories
 	# i.e. use ~/dotfiles/vim/ rather than ~/dotfiles/vim
-	~/dotfiles/do_backup ~/.Xresources
+	~/dotfiles/scripts/do_backup ~/.Xresources
 	ln -s ~/dotfiles/Xresources ~/.Xresources
 	xrdb ~/.Xresources
 
-lctags:
-	~/dotfiles/do_backup ~/.ctags
+ctags:
+	~/dotfiles/scripts/do_backup ~/.ctags
 	ln -s ~/dotfiles/ctags ~/.ctags
 
 

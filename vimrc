@@ -27,6 +27,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 " Plugin 'itchyny/lightline.vim'
 Plugin 'Shougo/neocomplete.vim' " need to have lua enabled, try install vim-youcompleteme package with vim-gtk
 Plugin 'scrooloose/syntastic' " make sure external syntax checkers are installed, e.g. hlint
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()
 
@@ -249,6 +250,8 @@ nnoremap Q <Nop>
   " Check :help ctrlp-options for other options.
   " http://kien.github.io/ctrlp.vim/
 
+" ======= tagbar ========
+  nmap <F9> :TagbarToggle<CR>
 
 " ====== neocomplete ====
 " taken from https://github.com/Shougo/neocomplete.vim
