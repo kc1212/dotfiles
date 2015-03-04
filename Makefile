@@ -13,7 +13,7 @@ vim: submodule
 	ln -s ~/dotfiles/vim ~/.vim
 	ln -s ~/dotfiles/vimrc ~/.vimrc
 	ln -s ~/dotfiles/gvimrc ~/.gvimrc
-	# vim +PluginInstall +qall
+	vim +PluginInstall +qall
 
 
 bash:
