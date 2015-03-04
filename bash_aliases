@@ -13,12 +13,6 @@ fi
 # alias diff='colordiff'              # requires colordiff package
 # alias grep='grep --color=auto'
 alias more='less'
-alias df='df -h'
-alias du='du -c -h'
-alias mkdir='mkdir -p -v'
-alias nano='nano -w'
-# alias ping='ping -c 5'
-alias dmesg='dmesg -HL'
 alias tmux="TERM=xterm-256color tmux"
 # }}}
 
@@ -39,8 +33,7 @@ if [ $UID -ne 0 ]; then
     alias root='sudo -s'
     alias reboot='sudo systemctl reboot'
     alias poweroff='sudo systemctl poweroff'
-    alias update='sudo pacman -Su'
-    alias netctl='sudo netctl'
+    alias update='sudo yum update'
 fi
 
 ## ls ## {{{
