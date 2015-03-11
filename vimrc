@@ -28,6 +28,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'Shougo/neocomplete.vim' " need to have lua enabled, try install vim-youcompleteme package with vim-gtk
 Plugin 'scrooloose/syntastic' " make sure external syntax checkers are installed, e.g. hlint
 Plugin 'majutsushi/tagbar'
+Bundle 'jlanzarotta/bufexplorer'
 
 call vundle#end()
 
@@ -371,7 +372,7 @@ augroup JumpCursorOnEdit
 augroup END
 
 " Switch between source and header, requires ctags
-" TODO need to keep cursor position
+" TODO need to keep cursor position - we can do this using buffers
 " perhaps find file path (cscope?) and do :e, leveraging on JumpCursorOnEdit
 function! SwitchSourceHeader()
   if (expand ("%:e") == "cpp")
@@ -385,7 +386,8 @@ function! SwitchSourceHeader()
     exec "tag /^" . expand("%:t:r") . "\\.c\\(pp\\)\\?$"
   endif
 endfunction
-nmap <f4> :call SwitchSourceHeader()<CR>
+" disable this feature until this is implemented using buffers
+" nmap <f4> :call SwitchSourceHeader()<CR>
 
 " Fix Cursor in TMUX
 " if exists('$TMUX')
