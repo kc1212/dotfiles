@@ -1,19 +1,19 @@
+
 .PHONY: all submodule vim bash git tmux resources ctags clean_backup
 
 all: vim bash git tmux resources ctags
-	# do everything other than submodule
 
 submodule:
 	cd ~/dotfiles && git submodule init && git submodule update
 
-vim:
+vim: submodule
 	~/dotfiles/scripts/do_backup ~/.vim
 	~/dotfiles/scripts/do_backup ~/.vimrc
 	~/dotfiles/scripts/do_backup ~/.gvimrc
 	ln -s ~/dotfiles/vim ~/.vim
 	ln -s ~/dotfiles/vimrc ~/.vimrc
 	ln -s ~/dotfiles/gvimrc ~/.gvimrc
-	# vim +PluginInstall +qall
+	vim +PluginInstall +qall
 
 
 bash:
@@ -31,8 +31,9 @@ bash:
 git:
 	~/dotfiles/scripts/do_backup ~/.gitconfig
 	~/dotfiles/scripts/do_backup ~/.gitignore_global
-	ln -s ~/dotfiles/gitconfig ~/.gitconfig
-	ln -s ~/dotfiles/gitignore_global ~/.gitignore_global
+	# note the cp instead of ln -s
+	cp ~/dotfiles/gitconfig ~/.gitconfig
+	cp ~/dotfiles/gitignore_global ~/.gitignore_global
 
 tmux:
 	~/dotfiles/scripts/do_backup ~/.tmux.conf
