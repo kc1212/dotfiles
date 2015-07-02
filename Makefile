@@ -4,7 +4,7 @@
 all: vim bash git tmux resources ctags
 
 submodule:
-	cd ~/dotfiles && git submodule init && git submodule update
+	git submodule init && git submodule update
 
 vim: submodule
 	~/dotfiles/scripts/do_backup ~/.vim
@@ -15,6 +15,12 @@ vim: submodule
 	ln -s ~/dotfiles/gvimrc ~/.gvimrc
 	vim +PluginInstall +qall
 
+nvim: submodule
+	~/dotfiles/scripts/do_backup ~/.nvim
+	~/dotfiles/scripts/do_backup ~/.nvimrc
+	ln -s ~/dotfiles/vim ~/.nvim
+	ln -s ~/dotfiles/vimrc ~/.nvimrc
+	nvim +PluginInstall +qall
 
 bash:
 	~/dotfiles/scripts/do_backup ~/.bashrc
