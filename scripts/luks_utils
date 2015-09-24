@@ -15,6 +15,7 @@ function usage {
 
 set -x
 set -e
+set -u
 
 if [ "$#" -ne 2 ]; then
     echo "incorrect number of arguments"

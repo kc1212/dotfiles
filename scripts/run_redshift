@@ -1,2 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -e
+set -u
 redshift -l 51.5072:0.1275 -t 6000k:5000k &

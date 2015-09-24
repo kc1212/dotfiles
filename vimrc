@@ -29,6 +29,7 @@ Plugin 'Shougo/neocomplete.vim' " need to have lua enabled, try install vim-youc
 Plugin 'scrooloose/syntastic' " make sure external syntax checkers are installed, e.g. hlint
 Plugin 'majutsushi/tagbar'
 Bundle 'jlanzarotta/bufexplorer'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
 call vundle#end()
 
@@ -326,6 +327,9 @@ nnoremap Q <Nop>
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+  " Disable omni completion.
+  autocmd FileType tex,bib NeoCompleteLock
 
   " Enable heavy omni completion.
   if !exists('g:neocomplete#sources#omni#input_patterns')
