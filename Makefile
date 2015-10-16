@@ -1,5 +1,5 @@
 
-.PHONY: all submodule vim bash git tmux resources ctags clean_backup
+.PHONY: all submodule vim bash git tmux resources ctags ghci clean_backup
 
 all: vim bash git tmux resources ctags
 
@@ -56,6 +56,8 @@ ctags:
 	~/dotfiles/scripts/do_backup ~/.ctags
 	ln -s ~/dotfiles/ctags ~/.ctags
 
+ghci:
+	ln -s ~/dotfiles/ghci ~/.ghci
 
 clean_backup:
 	rm -rf ~/.vim.bak

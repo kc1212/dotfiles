@@ -1,7 +1,7 @@
 # defaults
-  export EDITOR=vim
-  export CLICOLOR=TRUE
-  # export TERM="xterm-256color" # not recommended by tmux
+export EDITOR=vim
+export CLICOLOR=TRUE
+# export TERM="xterm-256color" # not recommended by tmux
 
 # ruby gem paths and variables
 # export GEM_HOME=$HOME/.gem
@@ -20,7 +20,7 @@ if [[ $('uname') == 'Linux' ]]; then
   # export QT_IM_MODULE=fcitx
 
   # for cabal, add after the path
-  export PATH=$HOME/.cabal/bin:$PATH
+  # export PATH=$HOME/.cabal/bin:$PATH
 
   # 32bit wine, need to use winecfg, archlinux specific
   # export WINEARCH=win32
