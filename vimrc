@@ -28,8 +28,15 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'Shougo/neocomplete.vim' " need to have lua enabled, try install vim-youcompleteme package with vim-gtk
 Plugin 'scrooloose/syntastic' " make sure external syntax checkers are installed, e.g. hlint
 Plugin 'majutsushi/tagbar'
-Bundle 'jlanzarotta/bufexplorer'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'Shougo/vimproc.vim'
+
+" Latex plugins
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
+
+" Haskell plugins
+Plugin 'eagletmt/neco-ghc'
+Plugin 'eagletmt/ghcmod-vim'
 
 call vundle#end()
 
@@ -342,6 +349,9 @@ nnoremap Q <Nop>
   " For perlomni.vim setting.
   " https://github.com/c9s/perlomni.vim
   let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+" ====== syntastic ======
+  let g:syntastic_haskell_checkers = ['hlint'] " let the ghcmod-vim do the rest
 
 
 " ===================== OTHER ==========================
