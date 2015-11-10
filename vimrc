@@ -77,10 +77,10 @@ set mouse=a             " enable mouse activities for all, including scrolling
 
 " ================ Search Settings  =================
 
-set incsearch        "Find the next match as we type the search
-set hlsearch         "Hilight searches by default, use :noh to reset
-set viminfo='100,f1  "Save up to 100 marks, enable capital marks
-set tags=./tags;/    "set the ctags search directory
+set incsearch                       "Find the next match as we type the search
+set hlsearch                        "Hilight searches by default, use :noh to reset
+set viminfo='100,f1                 "Save up to 100 marks, enable capital marks
+set tags=./tags;/,codex.tags;/      "set the ctags search directory, and for codex
 
 " ================ Turn Off Swap Files ==============
 
@@ -203,6 +203,14 @@ imap <A-8> <C-O>8gt
 let mapleader = ','
 nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
+
+" copy and paste to os clipboard
+nmap <leader>y "*y
+vmap <leader>y "*y
+nmap <leader>d "*d
+vmap <leader>d "*d
+nmap <leader>p "*p
+vmap <leader>p "*p
 
 " With the following, you can press F8 to show all buffers in tabs, or to
 " close all tabs (toggle: it alternately executes :tab ball and :tabo)
@@ -351,39 +359,30 @@ nnoremap Q <Nop>
   let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 " ====== syntastic ======
-  let g:syntastic_haskell_checkers = ['hlint'] " let the ghcmod-vim do the rest
+  "let g:syntastic_haskell_checkers = ['hlint']
+
+" ====== ghcmod-vim =====
+  " Type of expression under cursor
+  nmap <silent> <leader>ht :GhcModType<CR>
+  " Insert type of expression under cursor
+  nmap <silent> <leader>hT :GhcModTypeInsert<CR>
+  " GHC errors and warnings
+  nmap <silent> <leader>hc :GhcModCheck<CR>
+
 
 
 " ===================== OTHER ==========================
-" Automatically cd into the directory that the file is in
-" Useful when using :e to open files
-autocmd BufEnter * execute "chdir ".escape(expand("%:p:h"), ' ')
-
-" Restore cursor position to where it was before
-augroup JumpCursorOnEdit
-   au!
-   autocmd BufReadPost *
-            \ if expand("<afile>:p:h") !=? $TEMP |
-            \   if line("'\"") > 1 && line("'\"") <= line("$") |
-            \     let JumpCursorOnEdit_foo = line("'\"") |
-            \     let b:doopenfold = 1 |
-            \     if (foldlevel(JumpCursorOnEdit_foo) > foldlevel(JumpCursorOnEdit_foo - 1)) |
-            \        let JumpCursorOnEdit_foo = JumpCursorOnEdit_foo - 1 |
-            \        let b:doopenfold = 2 |
-            \     endif |
-            \     exe JumpCursorOnEdit_foo |
-            \   endif |
-            \ endif
-   " Need to postpone using "zv" until after reading the modelines.
-   autocmd BufWinEnter *
-            \ if exists("b:doopenfold") |
-            \   exe "normal zv" |
-            \   if(b:doopenfold > 1) |
-            \       exe  "+".1 |
-            \   endif |
-            \   unlet b:doopenfold |
-            \ endif
+" Return to last edit position when opening files
+augroup last_edit
+  autocmd!
+  autocmd BufReadPost *
+       \ if line("'\"") > 0 && line("'\"") <= line("$") |
+       \   exe "normal! g`\"" |
+       \ endif
 augroup END
+
+" Remember info about open buffers on close
+set viminfo^=%
 
 " Switch between source and header, requires ctags
 " TODO need to keep cursor position - we can do this using buffers
