@@ -1,63 +1,64 @@
 
 .PHONY: all submodule vim bash git tmux resources ctags ghci clean_backup
 
+REPODIR := ~/dotfiles/
+
 all: vim bash git tmux resources ctags
 
 submodule:
 	git submodule init && git submodule update
 
 vim: submodule
-	~/dotfiles/scripts/do_backup ~/.vim
-	~/dotfiles/scripts/do_backup ~/.vimrc
-	~/dotfiles/scripts/do_backup ~/.gvimrc
-	ln -s ~/dotfiles/vim ~/.vim
-	ln -s ~/dotfiles/vimrc ~/.vimrc
-	ln -s ~/dotfiles/gvimrc ~/.gvimrc
-	vim +PluginInstall +qall
+	$(REPODIR)scripts/do_backup ~/.vim
+	$(REPODIR)scripts/do_backup ~/.vimrc
+	$(REPODIR)scripts/do_backup ~/.gvimrc
+	ln -s $(REPODIR)vim ~/.vim
+	ln -s $(REPODIR)vimrc ~/.vimrc
+	ln -s $(REPODIR)gvimrc ~/.gvimrc
 
 nvim: submodule
-	~/dotfiles/scripts/do_backup ~/.nvim
-	~/dotfiles/scripts/do_backup ~/.nvimrc
-	ln -s ~/dotfiles/vim ~/.nvim
-	ln -s ~/dotfiles/vimrc ~/.nvimrc
+	$(REPODIR)scripts/do_backup ~/.nvim
+	$(REPODIR)scripts/do_backup ~/.nvimrc
+	ln -s $(REPODIR)vim ~/.nvim
+	ln -s $(REPODIR)vimrc ~/.nvimrc
 	nvim +PluginInstall +qall
 
 bash:
-	~/dotfiles/scripts/do_backup ~/.bashrc
-	~/dotfiles/scripts/do_backup ~/.bash_aliases
-	~/dotfiles/scripts/do_backup ~/.bash_logout
-	~/dotfiles/scripts/do_backup ~/.bash_profile
-	~/dotfiles/scripts/do_backup ~/.bash_env
-	ln -s ~/dotfiles/bashrc ~/.bashrc
-	ln -s ~/dotfiles/bash_aliases ~/.bash_aliases
-	ln -s ~/dotfiles/bash_logout ~/.bash_logout
-	ln -s ~/dotfiles/bash_profile ~/.bash_profile
-	ln -s ~/dotfiles/bash_env ~/.bash_env
+	$(REPODIR)scripts/do_backup ~/.bashrc
+	$(REPODIR)scripts/do_backup ~/.bash_aliases
+	$(REPODIR)scripts/do_backup ~/.bash_logout
+	$(REPODIR)scripts/do_backup ~/.bash_profile
+	$(REPODIR)scripts/do_backup ~/.bash_env
+	ln -s $(REPODIR)bashrc ~/.bashrc
+	ln -s $(REPODIR)bash_aliases ~/.bash_aliases
+	ln -s $(REPODIR)bash_logout ~/.bash_logout
+	ln -s $(REPODIR)bash_profile ~/.bash_profile
+	ln -s $(REPODIR)bash_env ~/.bash_env
 
 git:
-	~/dotfiles/scripts/do_backup ~/.gitconfig
-	~/dotfiles/scripts/do_backup ~/.gitignore_global
+	$(REPODIR)scripts/do_backup ~/.gitconfig
+	$(REPODIR)scripts/do_backup ~/.gitignore_global
 	# note the cp instead of ln -s
-	cp ~/dotfiles/gitconfig ~/.gitconfig
-	cp ~/dotfiles/gitignore_global ~/.gitignore_global
+	cp $(REPODIR)gitconfig ~/.gitconfig
+	cp $(REPODIR)gitignore_global ~/.gitignore_global
 
 tmux:
-	~/dotfiles/scripts/do_backup ~/.tmux.conf
-	ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
+	$(REPODIR)scripts/do_backup ~/.tmux.conf
+	ln -s $(REPODIR)tmux.conf ~/.tmux.conf
 
 resources:
 	# note: place '/' at the end of path for directories
-	# i.e. use ~/dotfiles/vim/ rather than ~/dotfiles/vim
-	~/dotfiles/scripts/do_backup ~/.Xresources
-	ln -s ~/dotfiles/Xresources ~/.Xresources
+	# i.e. use $(REPODIR)vim/ rather than $(REPODIR)vim
+	$(REPODIR)scripts/do_backup ~/.Xresources
+	ln -s $(REPODIR)Xresources ~/.Xresources
 	xrdb ~/.Xresources
 
 ctags:
-	~/dotfiles/scripts/do_backup ~/.ctags
-	ln -s ~/dotfiles/ctags ~/.ctags
+	$(REPODIR)scripts/do_backup ~/.ctags
+	ln -s $(REPODIR)ctags ~/.ctags
 
-ghci:
-	ln -s ~/dotfiles/ghci ~/.ghci
+haskell:
+	ln -s $(REPODIR)ghci ~/.ghci
 
 clean_backup:
 	rm -rf ~/.vim.bak

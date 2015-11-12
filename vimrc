@@ -1,47 +1,66 @@
 " CREDIT TO dotfiles
 " this .vimrc is taken from https://github.com/skwp/dotfiles/blob/master/vimrc
-" Modified by kc
+" Modified by kc1212
 
-" to enable system clipboard, i.e. "* and "+ registers, vim need to have clipboard enabled.
-" try to install vim-gtk package and see below
-" http://stackoverflow.com/questions/11489428/how-to-make-vim-paste-from-and-copy-to-systems-clipboard
+" Note: Skip initialization for vim-tiny or vim-small.
+if 0 | endif
 
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+if has('vim_starting')
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
 
-" =============== Vundle Initialization ===============
-filetype off                  " required
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Required:
+call neobundle#begin(expand('~/.vim/bundle/'))
 
-" use submodules to manage Vundle
-" Plugin 'gmarik/Vundle.vim'
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-Plugin 'kien/ctrlp.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'scrooloose/nerdtree'
-Plugin 'christoomey/vim-tmux-navigator'
-" Plugin 'itchyny/lightline.vim'
-Plugin 'Shougo/neocomplete.vim' " need to have lua enabled, try install vim-youcompleteme package with vim-gtk
-Plugin 'scrooloose/syntastic' " make sure external syntax checkers are installed, e.g. hlint
-Plugin 'majutsushi/tagbar'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'Shougo/vimproc.vim'
+" My Bundles here:
+" Refer to |:NeoBundle-examples|.
+" Note: You don't set neobundle setting in .gvimrc!
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'christoomey/vim-tmux-navigator'
+" NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'Shougo/neocomplete.vim' " need to have lua enabled, try install vim-youcompleteme package with vim-gtk
+NeoBundle 'scrooloose/syntastic' " make sure external syntax checkers are installed, e.g. hlint
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'jlanzarotta/bufexplorer'
+
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 
 " Latex plugins
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
+NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 
 " Haskell plugins
-Plugin 'eagletmt/neco-ghc'
-Plugin 'eagletmt/ghcmod-vim'
+NeoBundle 'eagletmt/neco-ghc'
+NeoBundle 'eagletmt/ghcmod-vim'
 
-call vundle#end()
+call neobundle#end()
 
-filetype plugin on
-filetype indent on
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+
+
 
 " ================ General Config ====================
 
@@ -205,6 +224,9 @@ nmap <leader>d :NERDTreeToggle<CR>
 nmap <leader>f :NERDTreeFind<CR>
 
 " copy and paste to os clipboard
+" to enable system clipboard, i.e. "* and "+ registers, vim need to have clipboard enabled.
+" try to install vim-gtk package and see below
+" http://stackoverflow.com/questions/11489428/how-to-make-vim-paste-from-and-copy-to-systems-clipboard
 nmap <leader>y "*y
 vmap <leader>y "*y
 nmap <leader>d "*d
