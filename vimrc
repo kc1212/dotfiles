@@ -227,12 +227,12 @@ nmap <leader>f :NERDTreeFind<CR>
 " to enable system clipboard, i.e. "* and "+ registers, vim need to have clipboard enabled.
 " try to install vim-gtk package and see below
 " http://stackoverflow.com/questions/11489428/how-to-make-vim-paste-from-and-copy-to-systems-clipboard
-nmap <leader>y "*y
-vmap <leader>y "*y
-nmap <leader>d "*d
-vmap <leader>d "*d
-nmap <leader>p "*p
-vmap <leader>p "*p
+nmap <leader>y "+y
+vmap <leader>y "+y
+nmap <leader>d "+d
+vmap <leader>d "+d
+nmap <leader>p "+p
+vmap <leader>p "+p
 
 " With the following, you can press F8 to show all buffers in tabs, or to
 " close all tabs (toggle: it alternately executes :tab ball and :tabo)
