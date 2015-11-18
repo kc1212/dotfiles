@@ -1,5 +1,5 @@
 
-.PHONY: all submodule vim bash git tmux resources ctags ghci clean_backup
+.PHONY: all submodule vim bash git tmux resources ctags haskell clean_backup
 
 REPODIR := ~/dotfiles/
 
@@ -21,7 +21,6 @@ nvim: submodule
 	$(REPODIR)scripts/do_backup ~/.nvimrc
 	ln -s $(REPODIR)vim ~/.nvim
 	ln -s $(REPODIR)vimrc ~/.nvimrc
-	nvim +PluginInstall +qall
 
 bash:
 	$(REPODIR)scripts/do_backup ~/.bashrc
