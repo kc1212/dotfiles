@@ -283,7 +283,7 @@ nnoremap Q <Nop>
   let g:ctrlp_working_path_mode = 'ra'
   let g:ctrlp_custom_ignore = {
     \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-    \ 'file': '\v\.(exe|so|dll|o|hi)$',
+    \ 'file': '\v\.(exe|so|dll|o|class|hi|dyn_o|dyn_hi)$',
     \ 'link': 'some_bad_symbolic_links',
     \ }
   " Check :help ctrlp-options for other options.
