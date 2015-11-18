@@ -1,5 +1,7 @@
 
-.PHONY: all submodule vim bash git tmux resources ctags haskell clean_backup
+# TODO create a function that does backup and symbolic link
+
+.PHONY: all submodule vim bash git tmux resources ctags haskell nix clean_backup
 
 REPODIR := ~/dotfiles/
 
@@ -57,7 +59,13 @@ ctags:
 	ln -s $(REPODIR)ctags ~/.ctags
 
 haskell:
+	$(REPODIR)scripts/do_backup ~/.ghci
 	ln -s $(REPODIR)ghci ~/.ghci
+
+nix:
+	$(REPODIR)scripts/do_backup ~/.nixpkgs
+	ln -s $(REPODIR)nixpkgs ~/.nixpkgs
+
 
 clean_backup:
 	rm -rf ~/.vim.bak

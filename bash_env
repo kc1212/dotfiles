@@ -53,11 +53,4 @@ cl() {
     fi
 }
 
-# use vimx if it exists
-which vimx > /dev/null 2>&1 && alias vim=vimx
-
-# use anti-aliased fonts for Java applications
-# https://wiki.archlinux.org/index.php/java#Tips_and_tricks
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'
-
 
