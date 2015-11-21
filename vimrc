@@ -51,6 +51,9 @@ NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
 NeoBundle 'eagletmt/neco-ghc'
 NeoBundle 'eagletmt/ghcmod-vim'
 
+" Go plugins
+NeoBundle 'fatih/vim-go'
+
 call neobundle#end()
 
 " Required:
@@ -125,8 +128,8 @@ set softtabstop=4
 set tabstop=4
 set expandtab
 
-" exception for c/cpp source files, alternatively use ftplugin
-autocmd BufRead,BufNewFile *.c,*.cpp,*.h,*.hpp, set sw=8 sts=8 ts=8 noic cin noexpandtab
+" exception for c/cpp and golang source files, alternatively use ftplugin
+autocmd BufRead,BufNewFile *.c,*.cpp,*.h,*.hpp,*.go set sw=8 sts=8 ts=8 noic cin noexpandtab
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
@@ -385,11 +388,11 @@ nnoremap Q <Nop>
 
 " ====== ghcmod-vim =====
   " Type of expression under cursor
-  nmap <silent> <leader>ht :GhcModType<CR>
+  au FileType haskell nmap <silent> <leader>ht :GhcModType<CR>
   " Insert type of expression under cursor
-  nmap <silent> <leader>hT :GhcModTypeInsert<CR>
+  au FileType haskell nmap <silent> <leader>hT :GhcModTypeInsert<CR>
   " GHC errors and warnings
-  nmap <silent> <leader>hc :GhcModCheck<CR>
+  au FileType haskell nmap <silent> <leader>hc :GhcModCheck<CR>
 
 
 
