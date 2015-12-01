@@ -1,0 +1,16 @@
+
+# place in $XDG_CONFIG_HOME/zathura/zathurarc
+# for more info see man zathurarc
+
+set font "dejavu normal 12"
+
+set default-bg "#002b36"
+set statusbar-bg "#073642"
+set statusbar-fg "#93a1a1"
+set index-bg "#002b36"
+set index-fg "#93a1a1"
+set index-active-bg "#268bd2"
+set index-active-fg "#eee8d5"
+set recolor-darkcolor "#657b83"
+set recolor-lightcolor "#fdf6e3"
+
