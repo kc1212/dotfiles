@@ -255,6 +255,12 @@ autocmd BufRead,BufNewFile *.tex\|*.txt set wrap linebreak nolist textwidth=0 wr
 " unmap ex mode
 nnoremap Q <Nop>
 
+" gui stuff
+if has('gui_running')
+    set guifont=DejaVu\ Sans\ Mono\ 12
+endif
+
+
 " ==================== Plugins =========================
 " ==== solarized colour ====
   set background=dark
@@ -268,7 +274,15 @@ nnoremap Q <Nop>
   " autocmd vimenter * NERDTree
   " autocmd vimenter * if !argc() | NERDTree | endif
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-  let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+  let NERDTreeIgnore=[
+            \ '\~$', '\.swo$', '\.swp$',
+            \ '\.git', '\.hg', '\.svn', '\.bzr',
+            \ '\.o', '\.so', '\.exe', '\.dll',
+            \ '\.hi', '\.dyn_o', '\.dyn_hi',
+            \ '\.aux', '\.lof', '\.fls', '\.out',
+            \ '\.pyc',
+            \ '\.class'
+            \ ]
   map <f2> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
   " Run NERDTree using :NERDTree
   " Type ? in NERDTree for help
@@ -285,8 +299,8 @@ nnoremap Q <Nop>
   let g:ctrlp_cmd = 'CtrlP'
   let g:ctrlp_working_path_mode = 'ra'
   let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-    \ 'file': '\v\.(exe|so|dll|o|class|hi|dyn_o|dyn_hi)$',
+    \ 'dir':  '\v[\/]\.(git|hg|svn|bzr)$',
+    \ 'file': '\v\.(o|so|exe|dll|hi|dyn_o|dyn_hi|aux|lof|fls|out|pyc|class)$',
     \ 'link': 'some_bad_symbolic_links',
     \ }
   " Check :help ctrlp-options for other options.
