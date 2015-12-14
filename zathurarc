@@ -14,3 +14,5 @@ set index-active-fg "#eee8d5"
 set recolor-darkcolor "#657b83"
 set recolor-lightcolor "#fdf6e3"
 
+set selection-clipboard clipboard
+
