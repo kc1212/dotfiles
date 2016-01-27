@@ -248,9 +248,13 @@ nmap <A-]> :pop<CR>
 nmap <F3> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-" wrap lines for *.tex or *.txt files, taken from:
+" wrap lines for text-type files, taken from:
 " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
-autocmd BufRead,BufNewFile *.tex\|*.txt set wrap linebreak nolist textwidth=0 wrapmargin=0
+autocmd BufRead,BufNewFile *.tex\|*.txt\|*.md\|*.markdown set wrap linebreak nolist textwidth=0 wrapmargin=0
+
+" markdown highlighting
+" https://stackoverflow.com/questions/10964681/enabling-markdown-highlighting-in-vim
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 " unmap ex mode
 nnoremap Q <Nop>
@@ -407,7 +411,6 @@ endif
   au FileType haskell nmap <silent> <leader>hT :GhcModTypeInsert<CR>
   " GHC errors and warnings
   au FileType haskell nmap <silent> <leader>hc :GhcModCheck<CR>
-
 
 
 " ===================== OTHER ==========================
