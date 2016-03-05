@@ -1,15 +1,14 @@
 # defaults
-export EDITOR=vim
+export EDITOR=vimx
 export CLICOLOR=TRUE
 # export TERM="xterm-256color" # not recommended by tmux
 
 # golang
 export GOPATH=$HOME/gocode
 
-# ruby gem paths and variables
-# export GEM_HOME=$HOME/.gem
-# export GEM_PATH=$GEM_HOME
-# export PATH=$HOME/.gem/ruby/1.9.1/bin:$PATH
+# stack (local bin)
+export PATH=$HOME/.local/bin:$PATH
+
 
 # some useful functions, taken from archwiki
 
@@ -17,15 +16,4 @@ export GOPATH=$HOME/gocode
 calc() {
     echo "scale=3;$@" | bc -l
 }
-
-# cd and ls in one
-cl() {
-    if [[ -d "$1" ]]; then
-        cd "$1"
-        ls
-    else
-        echo "bash: cl: '$1': Directory not found"
-    fi
-}
-
 
