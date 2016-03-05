@@ -6,6 +6,8 @@
 
 vim/backups/
 vim/bundle/
+vim/plugged/
+vim/autoload/plug.vim
 *.swp
 .netrwhist
 

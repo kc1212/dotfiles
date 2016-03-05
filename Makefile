@@ -1,16 +1,16 @@
 
 # TODO create a function that does backup and symbolic link
 
-.PHONY: all submodule vim bash git tmux resources ctags haskell nix clean_backup
+.PHONY: all vimplug vim bash git tmux resources ctags haskell nix clean_backup
 
 REPODIR := ~/dotfiles/
 
 all: vim bash git tmux resources ctags
 
-submodule:
-	git submodule init && git submodule update
+vimplug:
+	curl -fLo $(REPODIR)vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-vim: submodule
+vim: vimplug
 	$(REPODIR)scripts/do_backup ~/.vim
 	$(REPODIR)scripts/do_backup ~/.vimrc
 	$(REPODIR)scripts/do_backup ~/.gvimrc
@@ -18,7 +18,7 @@ vim: submodule
 	ln -s $(REPODIR)vimrc ~/.vimrc
 	ln -s $(REPODIR)gvimrc ~/.gvimrc
 
-nvim: submodule
+nvim: vimplug
 	$(REPODIR)scripts/do_backup ~/.nvim
 	$(REPODIR)scripts/do_backup ~/.nvimrc
 	ln -s $(REPODIR)vim ~/.nvim
