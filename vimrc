@@ -412,6 +412,10 @@ endif
   " GHC errors and warnings
   au FileType haskell nmap <silent> <leader>hc :GhcModCheck<CR>
 
+" ======= vim-go ========
+" Disable scratch window
+" https://github.com/fatih/vim-go/issues/415
+  set completeopt=menu
 
 " ===================== OTHER ==========================
 " Return to last edit position when opening files
