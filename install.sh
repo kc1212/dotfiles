@@ -18,9 +18,9 @@ function do_backup()
 
     filename=$1
 
-    if [ -f $filename ] || [ -d $filename ]
+    if [ -f "$filename" ] || [ -d "$filename" ]
     then
-        mv $filename{,.bak}
+        mv "$filename"{,.bak}
         echo "backup performed on $filename"
     fi
 }
@@ -29,21 +29,21 @@ function install_dotfiles()
 {
     # create symlink
     for f in $ln_files; do
-        do_backup $f
-        ln -s $REPODIR/$f ~/.$f
+        do_backup "$f"
+        ln -s "$REPODIR/$f" "$HOME/.$f"
     done
 
     # create copies
     for f in $cp_files; do
-        do_backup $f
-        cp $REPODIR/$f ~/.$f
+        do_backup "$f"
+        cp "$REPODIR/$f" "$HOME/.$f"
     done
 
     # additional stuff
     xrdb ~/.Xresources
 
     # neovim stuff, download to $vim_plug, then copy to nvim directory
-    # TODO there should be a way to delete/uninstall these  too
+    # TODO there should be a way to delete/uninstall these too
     vim_plug=~/.vim/autoload/plug.vim
     curl -fLo $vim_plug --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -54,17 +54,17 @@ function install_dotfiles()
 function delete_backup()
 {
     for f in $ln_files $cp_files; do
-        rm -f ~/.$f.bak
+        rm -f "$HOME/.$f.bak"
     done
 }
 
 function delete_links()
 {
     for f in $ln_files; do
-        if [[ -L ~/.$f ]]; then
-            rm -f ~/.$f
+        if [[ -L $HOME/.$f ]]; then
+            rm -f "$HOME/.$f"
         else
-            echo "~/.$f is not a symlink!"
+            echo "$HOME/.$f is not a symlink!"
             exit 1
         fi
     done

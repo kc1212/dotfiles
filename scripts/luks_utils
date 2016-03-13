@@ -25,18 +25,18 @@ fi
 
 cmd=$1
 input_name=$2
-vol_name="$(basename $2)_volume"
+vol_name="$(basename "$2")_volume"
 
 if [ "$cmd" == "mount" ]; then
-    mnt_name="/mnt/$(basename $input_name)"
-    cryptsetup luksOpen $input_name $vol_name
-    mkdir -p $mnt_name
-    mount -t ext4 /dev/mapper/$vol_name $mnt_name
-    chown 1000:1000 $mnt_name # TODO 1000 might not always be valid
+    mnt_name="/mnt/$(basename "$input_name")"
+    cryptsetup luksOpen "$input_name" "$vol_name"
+    mkdir -p "$mnt_name"
+    mount -t ext4 /dev/mapper/"$vol_name" "$mnt_name"
+    chown 1000:1000 "$mnt_name" # TODO 1000 might not always be valid
 
 elif [ "$cmd" == "umount" ]; then
-    umount $input_name
-    cryptsetup luksClose $vol_name
+    umount "$input_name"
+    cryptsetup luksClose "$vol_name"
 
 else
     echo "invalid command: $cmd"
