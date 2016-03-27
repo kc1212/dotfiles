@@ -9,7 +9,7 @@ if &compatible
   set nocompatible               " Be iMproved
 endif
 
-" Start of plv
+" Start of plug
 call plug#begin()
 
 " My plugins here:
@@ -22,9 +22,12 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/syntastic' " make sure external syntax checkers are installed, e.g. hlint
 Plug 'majutsushi/tagbar'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/vimproc' " remember to run make in the appropriate directory
+" consider changing to https://github.com/Shougo/dein.vim
 
 " Latex plugins
-Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'lervag/vimtex'
 
 " Haskell plugins
 Plug 'eagletmt/neco-ghc'
@@ -32,6 +35,10 @@ Plug 'eagletmt/ghcmod-vim'
 
 " Go plugins
 Plug 'fatih/vim-go'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+
+" GNU Plot
+Plug 'vim-scripts/gnuplot.vim'
 
 call plug#end()
 
@@ -64,12 +71,8 @@ syntax on
 set colorcolumn=80
 highlight ColorColumn guibg=Gray14
 
-" makefile
-" take from http://stackoverflow.com/questions/729249/how-to-efficiently-make-with-vim
-set makeprg=[[\ -f\ Makefile\ ]]\ &&\ make\ \\\|\\\|\ make\ -C\ ..
-" map <F5> :make<CR><C-w><Up>
-
-set mouse=a             " enable mouse activities for all, including scrolling
+" enable mouse activities for all, including scrolling
+set mouse=a
 
 " ================ Search Settings  =================
 
@@ -143,11 +146,11 @@ set sidescroll=1
 " http://learnvimscriptthehardway.stevelosh.com/chapters/05.html
 
 " map escape sequence to alt, works for gvim?
-for i in range(48,57) + range(65,90) + range(97,122)
-  let c = nr2char(i)
-  exec "set <A-".c.">=\e".c
-endfor
-set timeoutlen=1000 ttimeoutlen=0
+" for i in range(48,57) + range(65,90) + range(97,122)
+"   let c = nr2char(i)
+"   exec "set <A-".c.">=\e".c
+" endfor
+" set timeoutlen=1000 ttimeoutlen=0
 
 nnoremap ; :
 
@@ -197,8 +200,6 @@ imap <A-8> <C-O>8gt
 
 " leader remap
 let mapleader = ','
-nmap <leader>d :NERDTreeToggle<CR>
-nmap <leader>f :NERDTreeFind<CR>
 
 " copy and paste to os clipboard
 " to enable system clipboard, i.e. "* and "+ registers, vim need to have clipboard enabled.
@@ -249,28 +250,14 @@ endif
   autocmd BufRead,BufNewFile *.pl set filetype=prolog
 
 " ==== NERDTree ====
+  nmap <leader>d :NERDTreeToggle<CR>
+  nmap <leader>f :NERDTreeFind<CR>
   " autocmd vimenter * NERDTree
   " autocmd vimenter * if !argc() | NERDTree | endif
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-  let NERDTreeIgnore=[
-            \ '\~$', '\.swo$', '\.swp$',
-            \ '\.git', '\.hg', '\.svn', '\.bzr',
-            \ '\.o', '\.so', '\.exe', '\.dll',
-            \ '\.hi', '\.dyn_o', '\.dyn_hi',
-            \ '\.aux', '\.lof', '\.fls', '\.out',
-            \ '\.pyc',
-            \ '\.class'
-            \ ]
-  map <f2> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
+  " map <f2> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
   " Run NERDTree using :NERDTree
   " Type ? in NERDTree for help
-
-" " ==== vim-lightline ====
-"   set laststatus=2
-"   let g:lightline = {
-"     \ 'colorscheme': 'solarized',
-"     \ }
-"   " :help lightline
 
 " ======= ctrlp =========
   let g:ctrlp_map = '<c-p>'
@@ -302,6 +289,9 @@ endif
 " Disable scratch window
 " https://github.com/fatih/vim-go/issues/415
   set completeopt=menu
+
+" ====== deoplete =======
+  let g:deoplete#enable_at_startup = 1
 
 " ===================== OTHER ==========================
 " Return to last edit position when opening files

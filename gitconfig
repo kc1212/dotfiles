@@ -1,11 +1,10 @@
-
-# [user]
-#   name = abc
-#   email = abc@def.ghi
+[user]
+  name = kc1212
+  email = kc1212@users.noreply.github.com
 
 [core]
   excludesfile = ~/.gitignore_global
-  editor = vim
+  editor = nvim
 
 [color]
   ui = auto

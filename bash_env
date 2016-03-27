@@ -5,12 +5,10 @@ export CLICOLOR=TRUE
 
 # golang
 export GOPATH=$HOME/gocode
+export PATH=$GOPATH/bin:$PATH
 
 # stack (local bin)
 export PATH=$HOME/.local/bin:$PATH
-
-
-# some useful functions, taken from archwiki
 
 # calculator
 calc() {
