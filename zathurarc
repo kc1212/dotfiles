@@ -16,3 +16,4 @@ set recolor-lightcolor "#fdf6e3"
 
 set selection-clipboard clipboard
 
+unbind C-\

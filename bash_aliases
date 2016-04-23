@@ -13,7 +13,8 @@ fi
 # alias diff='colordiff'              # requires colordiff package
 # alias grep='grep --color=auto'
 alias more='less'
-alias tmux="TERM=xterm-256color tmux"
+# https://unix.stackexchange.com/questions/1045/getting-256-colors-to-work-in-tmux
+alias tmux='tmux -2'
 # }}}
 
 ## New commands ## {{{
@@ -33,7 +34,7 @@ if [ $UID -ne 0 ]; then
     alias root='sudo -s'
     alias reboot='sudo systemctl reboot'
     alias poweroff='sudo systemctl poweroff'
-    alias update='sudo yum update'
+    alias update='sudo dnf update'
 fi
 
 ## ls ## {{{

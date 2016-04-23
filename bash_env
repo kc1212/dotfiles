@@ -1,5 +1,5 @@
 # defaults
-export EDITOR=vimx
+export EDITOR=nvim
 export CLICOLOR=TRUE
 # export TERM="xterm-256color" # not recommended by tmux
 

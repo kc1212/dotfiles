@@ -26,7 +26,7 @@ if [ "$PS1" ]; then
       if [ -e /etc/sysconfig/bash-prompt-xterm ]; then
           PROMPT_COMMAND=/etc/sysconfig/bash-prompt-xterm
       elif [ "${VTE_VERSION:-0}" -ge 3405 ]; then
-          PROMPT_COMMAND="__vte_prompt_command"
+          PROMPT_COMMAND='__vte_prompt_command'
       else
           PROMPT_COMMAND='printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/\~}"'
       fi
@@ -43,9 +43,11 @@ if [ "$PS1" ]; then
       ;;
     esac
   fi
+
   # Turn on parallel history
   shopt -s histappend
   history -a
+
   # Turn on checkwinsize
   shopt -s checkwinsize
   [ "$PS1" = "\\s-\\v\\\$ " ] && PS1="[\u@\h \W]\\$ "
@@ -77,7 +79,7 @@ if ! shopt -q login_shell ; then # We're not a login shell
     # Current threshold for system reserved uid/gids is 200
     # You could check uidgid reservation validity in
     # /usr/share/doc/setup-*/uidgid file
-    if [ $UID -gt 199 ] && [ "`id -gn`" = "`id -un`" ]; then
+    if [ $UID -gt 199 ] && [ "$(id -gn)" = "$(id -un)" ]; then
        umask 002
     else
        umask 022
@@ -99,16 +101,10 @@ if ! shopt -q login_shell ; then # We're not a login shell
     unset i
     unset -f pathmunge
 fi
-# vim:ts=4:sw=4
 
 ###############################################################################
 ###############################################################################
 ###############################################################################
-
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-256color) color_prompt=yes;; # change to 256
-esac
 
 # environment variables, $TERM is included
 if [ -f ~/.bash_env ]; then
@@ -138,6 +134,6 @@ fi
 unset SSH_ASKPASS
 
 # for nix
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then . "$HOME/.nix-profile/etc/profile.d/nix.sh"; fi
 
 
