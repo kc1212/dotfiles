@@ -37,6 +37,9 @@ Plug 'eagletmt/ghcmod-vim'
 Plug 'fatih/vim-go'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 
+" Rust plugins
+Plug 'rust-lang/rust.vim'
+
 " GNU Plot
 Plug 'vim-scripts/gnuplot.vim'
 
