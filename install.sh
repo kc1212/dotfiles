@@ -4,7 +4,7 @@ set -e
 set -u
 
 # generic installation, the convention is ln -s $REPODIR/$file ~/.$file
-ln_files="vim vimrc bashrc bash_aliases bash_logout bash_env bash_profile tmux.conf Xresources ctags ghci nixpkgs"
+ln_files="vimrc bashrc bash_aliases bash_logout bash_env bash_profile tmux.conf Xresources ctags ghci nixpkgs"
 cp_files="gitconfig gitignore_global"
 REPODIR=~/dotfiles
 
@@ -16,12 +16,12 @@ function do_backup()
         exit 1
     fi
 
-    filename=$1
+    local f=$1
 
-    if [ -f "$filename" ] || [ -d "$filename" ]
+    if [ -f "$f" ] || [ -d "$f" ]
     then
-        mv "$filename"{,.bak}
-        echo "backup performed on $filename"
+        mv "$f"{,.bak}
+        echo "backup performed on $f"
     fi
 }
 
@@ -29,13 +29,13 @@ function install_dotfiles()
 {
     # create symlink
     for f in $ln_files; do
-        do_backup "$f"
-        ln -s "$REPODIR/$f" "$HOME/.$f"
+        do_backup "$HOME/.$f"
+        ln -sf "$REPODIR/$f" "$HOME/.$f"
     done
 
     # create copies
     for f in $cp_files; do
-        do_backup "$f"
+        do_backup "$HOME/.$f"
         cp "$REPODIR/$f" "$HOME/.$f"
     done
 
@@ -71,3 +71,6 @@ function delete_links()
 }
 
 # TODO parse arguments
+# delete_backup
+install_dotfiles
+# delete_links
