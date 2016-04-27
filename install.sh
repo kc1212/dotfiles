@@ -49,6 +49,9 @@ function install_dotfiles()
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     mkdir -p ~/.config/nvim/autoload && cp $vim_plug "$_"
     ln -s $REPODIR/vimrc ~/.config/nvim/init.vim
+
+    # zathura
+    # TODO
 }
 
 function delete_backup()
