@@ -39,6 +39,7 @@ Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 " Rust plugins
 Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 
 " GNU Plot
 Plug 'vim-scripts/gnuplot.vim'

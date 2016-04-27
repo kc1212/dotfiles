@@ -3,6 +3,10 @@ export EDITOR=nvim
 export CLICOLOR=TRUE
 # export TERM="xterm-256color" # not recommended by tmux
 
+# rust
+export PATH=$HOME/.cargo/bin:$PATH
+export RUST_SRC_PATH=$HOME/rustcode/rust/src
+
 # golang
 export GOPATH=$HOME/gocode
 export PATH=$GOPATH/bin:$PATH
