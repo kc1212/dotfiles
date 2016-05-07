@@ -39,9 +39,6 @@ function install_dotfiles()
         cp "$REPODIR/$f" "$HOME/.$f"
     done
 
-    # additional stuff
-    xrdb ~/.Xresources
-
     # neovim stuff, download to $vim_plug, then copy to nvim directory
     # TODO there should be a way to delete/uninstall these too
     vim_plug=~/.vim/autoload/plug.vim

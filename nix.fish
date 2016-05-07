@@ -20,7 +20,7 @@ if test -n "$HOME"
 	# channel.
 	set -xg NIX_PATH $NIX_PATH $HOME/.nix-defexpr/channels/nixpkgs
 
-    # Set $SSL_CERT_FILE so that Nixpkgs applications like curl work.
+	# Set $SSL_CERT_FILE so that Nixpkgs applications like curl work.
 	if test -e /etc/ssl/certs/ca-certificates.crt # NixOS, Ubuntu, Debian, Gentoo, Arch
 		set -xg SSL_CERT_FILE /etc/ssl/certs/ca-certificates.crt
 	else if test -e /etc/ssl/certs/ca-bundle.crt # Old NixOS

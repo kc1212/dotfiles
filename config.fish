@@ -3,7 +3,9 @@
 set -x EDITOR nvim
 
 ## nix
-source $HOME/.config/fish/nix.fish
+if test -L "$HOME/.nix-profile"
+	source $HOME/.config/fish/nix.fish
+end
 
 # rust
 set -x RUST_SRC_PATH $HOME/rustcode/rust/src
