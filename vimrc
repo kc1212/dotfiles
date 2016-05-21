@@ -13,33 +13,33 @@ endif
 call plug#begin()
 
 " My plugins here:
-" Note: You don't set neobundle setting in .gvimrc!
 Plug 'kien/ctrlp.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'christoomey/vim-tmux-navigator'
-" Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/syntastic' " make sure external syntax checkers are installed, e.g. hlint
 Plug 'majutsushi/tagbar'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'Shougo/deoplete.nvim'
-Plug 'Shougo/vimproc' " remember to run make in the appropriate directory
-" consider changing to https://github.com/Shougo/dein.vim
+
+" YouCompleteMe
+" install dependencies - dnf install automake gcc gcc-c++ kernel-devel cmake python-devel python3-devel
+" and clone the submodules - git submodule update --init --recursive
+" go to plugin dir and install - python3 ./install.py --clang-completer --gocode-completer --racer-completer
+if !has('nvim')
+  Plug 'Valloric/YouCompleteMe'
+endif
 
 " Latex plugins
 Plug 'lervag/vimtex'
 
 " Haskell plugins
-Plug 'eagletmt/neco-ghc'
-Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
+Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 
 " Go plugins
 Plug 'fatih/vim-go'
-Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 " Rust plugins
 Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
 
 " GNU Plot
 Plug 'vim-scripts/gnuplot.vim'
@@ -141,7 +141,7 @@ set wildignore+=*.png,*.jpg,*.gif
 
 " ================ Scrolling ========================
 
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set scrolloff=4         "Start scrolling when we're 4 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
@@ -294,8 +294,24 @@ endif
 " https://github.com/fatih/vim-go/issues/415
   set completeopt=menu
 
-" ====== deoplete =======
-  let g:deoplete#enable_at_startup = 1
+" ======= vimtex ========
+  if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+  endif
+  let g:ycm_semantic_triggers.tex = [
+        \ 're!\\[A-Za-z]*cite[A-Za-z]*(\[[^]]*\]){0,2}{[^}]*',
+        \ 're!\\[A-Za-z]*ref({[^}]*|range{([^,{}]*(}{)?))',
+        \ 're!\\hyperref\[[^]]*',
+        \ 're!\\includegraphics\*?(\[[^]]*\]){0,2}{[^}]*',
+        \ 're!\\(include(only)?|input){[^}]*',
+        \ 're!\\\a*(gls|Gls|GLS)(pl)?\a*(\s*\[[^]]*\]){0,2}\s*\{[^}]*',
+        \ 're!\\includepdf(\s*\[[^]]*\])?\s*\{[^}]*',
+        \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
+        \ ]
+
+
+" ======= rust-lang =====
+  " let g:rustfmt_autosave = 1
 
 " ===================== OTHER ==========================
 " Return to last edit position when opening files
@@ -309,32 +325,4 @@ augroup END
 
 " Remember info about open buffers on close
 set viminfo^=%
-
-" Switch between source and header, requires ctags
-" TODO need to keep cursor position - we can do this using buffers
-" perhaps find file path (cscope?) and do :e, leveraging on JumpCursorOnEdit
-function! SwitchSourceHeader()
-  if (expand ("%:e") == "cpp")
-    exec "tag /^" . expand("%:t:r") . "\\.h\\(pp\\)\\?$"
-    " exec "JumpCursorOnEdit_foo"
-  elseif (expand ("%:e") == "c")
-    exec "tag " . expand("%:t:r") . ".h"
-  elseif (expand ("%:e") == "hpp")
-    exec "tag " . expand("%:t:r") . ".cpp"
-  elseif (expand ("%:e") == "h")
-    exec "tag /^" . expand("%:t:r") . "\\.c\\(pp\\)\\?$"
-  endif
-endfunction
-" disable this feature until this is implemented using buffers
-" nmap <f4> :call SwitchSourceHeader()<CR>
-
-" Fix Cursor in TMUX
-" if exists('$TMUX')
-"   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-"   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-" else
-"   let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-"   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-" endif
-
 
