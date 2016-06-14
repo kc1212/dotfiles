@@ -30,12 +30,12 @@ values."
      markdown
      org
      (shell :variables
-            shell-default-term-shell "/bin/bash"
+            shell-default-shell 'eshell
             shell-default-height 30
             shell-default-position 'bottom)
      ;; spell-checking
      syntax-checking
-     ;; version-control
+     version-control
      c-c++
      rust
      latex
@@ -103,9 +103,7 @@ values."
                          solarized-light
                          spacemacs-dark
                          spacemacs-light
-                         leuven
-                         monokai
-                         zenburn)
+                         monokai)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line

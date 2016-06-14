@@ -20,14 +20,6 @@ Plug 'scrooloose/syntastic' " make sure external syntax checkers are installed, 
 Plug 'majutsushi/tagbar'
 Plug 'jlanzarotta/bufexplorer'
 
-" YouCompleteMe
-" install dependencies - dnf install automake gcc gcc-c++ kernel-devel cmake python-devel python3-devel
-" and clone the submodules - git submodule update --init --recursive
-" go to plugin dir and install - python3 ./install.py --clang-completer --gocode-completer --racer-completer
-if !has('nvim')
-  Plug 'Valloric/YouCompleteMe'
-endif
-
 " Latex plugins
 Plug 'lervag/vimtex'
 
