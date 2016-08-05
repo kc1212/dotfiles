@@ -38,6 +38,8 @@ values."
      version-control
      c-c++
      rust
+     go
+     haskell
      shell-scripts
      latex
      )
@@ -254,6 +256,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two lines at a time
   (setq mouse-wheel-progressive-speed nil) ;; don't accelerate
+  (setq-default tab-width 4)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
