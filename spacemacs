@@ -41,7 +41,10 @@ values."
      go
      haskell
      shell-scripts
-     latex
+     (latex :variables
+            latex-enable-auto-fill t
+            latex-build-command "LatexMk")
+     python
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -257,6 +260,7 @@ you should place your code here."
   (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))) ;; two lines at a time
   (setq mouse-wheel-progressive-speed nil) ;; don't accelerate
   (setq-default tab-width 4)
+  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
