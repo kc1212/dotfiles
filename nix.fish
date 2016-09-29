@@ -8,7 +8,7 @@ if test -n "$HOME"
 		/nix/store/xmlp6pyxi6hi3vazw9821nlhhiap6z63-coreutils-8.24/bin/ln -s "$_NIX_DEF_LINK" "$NIX_LINK"
 	end
 
-	set -xg PATH $NIX_LINK/bin $NIX_LINK/sbin $PATH
+	set --universal fish_user_paths $fish_user_paths $NIX_LINK/bin $NIX_LINK/sbin
 
 	# Subscribe the user to the Nixpkgs channel by default.
 	if not test -e $HOME/.nix-channels

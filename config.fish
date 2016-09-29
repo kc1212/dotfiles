@@ -8,16 +8,15 @@ if test -L "$HOME/.nix-profile"
 end
 
 # rust
-set -x RUST_SRC_PATH $HOME/rustcode/rust/src
-set PATH $PATH $HOME/.cargo/bin
+set -gx RUST_SRC_PATH $HOME/rustcode/rust/src
+set --universal fish_user_paths $fish_user_paths $HOME/.cargo/bin
 
 # golang
-set -x GOPATH $HOME/gocode
-set PATH $PATH $GOPATH/bin
+set -gx GOPATH $HOME/gocode
+set --universal fish_user_paths $fish_user_paths $GOPATH/bin
 
 # stack (local bin)
-set PATH $PATH $HOME/.local/bin
-
+set --universal fish_user_paths $fish_user_paths $HOME/.local/bin
 
 ## Aliases
 alias cp 'cp -i'
