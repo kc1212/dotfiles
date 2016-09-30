@@ -1,24 +1,25 @@
 ## Environment variables and PATH
-# general
-set -x EDITOR nvim
 
-## nix
+# editor
+set -xg EDITOR nvim
+
+# nix
 if test -L "$HOME/.nix-profile"
 	source $HOME/.config/fish/nix.fish
 end
 
 # rust
-set -gx RUST_SRC_PATH $HOME/rustcode/rust/src
-set --universal fish_user_paths $fish_user_paths $HOME/.cargo/bin
+set -xg RUST_SRC_PATH $HOME/rustcode/rust/src
+set fish_user_paths $fish_user_paths $HOME/.cargo/bin
 
 # golang
-set -gx GOPATH $HOME/gocode
-set --universal fish_user_paths $fish_user_paths $GOPATH/bin
+set -xg GOPATH $HOME/gocode
+set fish_user_paths $fish_user_paths $GOPATH/bin
 
 # stack (local bin)
-set --universal fish_user_paths $fish_user_paths $HOME/.local/bin
+set fish_user_paths $fish_user_paths $HOME/.local/bin
 
-## Aliases
+# aliases
 alias cp 'cp -i'
 alias mv 'mv -i'
 alias ln 'ln -i'
