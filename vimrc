@@ -148,8 +148,6 @@ set sidescroll=1
 " endfor
 " set timeoutlen=1000 ttimeoutlen=0
 
-nnoremap ; :
-
 " don't move cursor after pressing * or #
 nnoremap * *<C-o>
 nnoremap # #<C-o>
