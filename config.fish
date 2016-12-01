@@ -3,11 +3,6 @@
 # editor
 set -xg EDITOR nvim
 
-# nix
-if test -L "$HOME/.nix-profile"
-	source $HOME/.config/fish/nix.fish
-end
-
 # rust
 set -xg RUST_SRC_PATH $HOME/rustcode/rust/src
 set fish_user_paths $fish_user_paths $HOME/.cargo/bin
