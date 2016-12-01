@@ -21,17 +21,17 @@ Plug 'majutsushi/tagbar'
 Plug 'jlanzarotta/bufexplorer'
 
 " Latex plugins
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', { 'for': 'tex' }
 
 " Haskell plugins
 Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
 Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
 
 " Go plugins
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'for': 'go' }
 
 " Rust plugins
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 " GNU Plot
 Plug 'vim-scripts/gnuplot.vim'
