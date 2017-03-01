@@ -5,7 +5,7 @@ export CLICOLOR=TRUE
 
 # rust
 export PATH=$HOME/.cargo/bin:$PATH
-export RUST_SRC_PATH=$HOME/rustcode/rust/src
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # golang
 export GOPATH=$HOME/gocode
