@@ -4,7 +4,7 @@ set -e
 set -u
 
 # generic installation, the convention is ln -s $REPODIR/$file ~/.$file
-ln_files="vimrc bashrc bash_aliases bash_logout bash_env bash_profile tmux.conf Xresources ctags ghci nixpkgs"
+ln_files="vimrc bashrc bash_aliases bash_logout bash_env bash_profile tmux.conf"
 cp_files="gitconfig gitignore_global"
 REPODIR=~/dotfiles
 
@@ -30,13 +30,13 @@ function install_dotfiles()
     # create symlink
     for f in $ln_files; do
         do_backup "$HOME/.$f"
-        ln -sf "$REPODIR/$f" "$HOME/.$f"
+        ln -snf "$REPODIR/$f" "$HOME/.$f"
     done
 
     # create copies
     for f in $cp_files; do
         do_backup "$HOME/.$f"
-        cp "$REPODIR/$f" "$HOME/.$f"
+        cp -n "$REPODIR/$f" "$HOME/.$f"
     done
 
     # neovim stuff, download to $vim_plug, then copy to nvim directory
@@ -46,9 +46,6 @@ function install_dotfiles()
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     mkdir -p ~/.config/nvim/autoload && cp $vim_plug "$_"
     ln -s $REPODIR/vimrc ~/.config/nvim/init.vim
-
-    # zathura
-    # TODO
 }
 
 function delete_backup()

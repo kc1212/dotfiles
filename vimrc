@@ -13,22 +13,19 @@ endif
 call plug#begin()
 
 " My plugins here:
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/syntastic' " make sure external syntax checkers are installed, e.g. hlint
-Plug 'majutsushi/tagbar'
+Plug 'scrooloose/syntastic', { 'for': ['python', 'rust', 'haskell', 'sh', 'c'] }
+Plug 'scrooloose/nerdcommenter'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 " Latex plugins
 Plug 'lervag/vimtex', { 'for': 'tex' }
 
-" Haskell plugins
-Plug 'eagletmt/neco-ghc', { 'for': 'haskell' }
-Plug 'eagletmt/ghcmod-vim', { 'for': 'haskell' }
-
 " Go plugins
-Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 
 " Rust plugins
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
@@ -118,10 +115,10 @@ set nofoldenable        "dont fold by default
 
 " ================ Completion =======================
 
-"set wildmode=list:longest
-"set wildmenu                                   "enable ctrl-n and ctrl-p to scroll thru matches
+set wildmode=list:longest,full
+set wildmenu                                    "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore+=*.o,*.so,*.exe,*.dll,*.obj,*~   "stuff to ignore when tab completing
-"set wildignore+=*vim/backups*
+set wildignore+=*vim/backups*
 "set wildignore+=*sass-cache*
 set wildignore+=*DS_Store*
 "set wildignore+=vendor/rails/**
@@ -133,8 +130,8 @@ set wildignore+=*.png,*.jpg,*.gif
 
 " ================ Scrolling ========================
 
-set scrolloff=4         "Start scrolling when we're 4 lines away from margins
-set sidescrolloff=15
+"set scrolloff=4         "Start scrolling when we're 4 lines away from margins
+"set sidescrolloff=15
 set sidescroll=1
 
 " ================ Key Bindings =====================
@@ -142,22 +139,22 @@ set sidescroll=1
 " http://learnvimscriptthehardway.stevelosh.com/chapters/05.html
 
 " map escape sequence to alt, works for gvim?
-" for i in range(48,57) + range(65,90) + range(97,122)
-"   let c = nr2char(i)
-"   exec "set <A-".c.">=\e".c
-" endfor
-" set timeoutlen=1000 ttimeoutlen=0
+"for i in range(48,57) + range(65,90) + range(97,122)
+"  let c = nr2char(i)
+"  exec "set <A-".c.">=\e".c
+"endfor
+"set timeoutlen=1000 ttimeoutlen=0
 
 " don't move cursor after pressing * or #
-nnoremap * *<C-o>
-nnoremap # #<C-o>
+"nnoremap * *<C-o>
+"nnoremap # #<C-o>
 
-" map <C-a> GVgg
-" map <C-n> :enew
-" map <C-o> :e . <CR>
-" map <C-s> :w <CR>
-" imap <C-s> <Esc><C-s>
-" map <C-c> y
+"map <C-a> GVgg
+"map <C-n> :enew
+"map <C-o> :e . <CR>
+"map <C-s> :w <CR>
+"imap <C-s> <Esc><C-s>
+"map <C-c> y
 
 " moving in wraped text, nmap = normal mode map
 nmap j gj
@@ -168,29 +165,6 @@ xmap j gj
 xmap k gk
 xmap <Down> gj
 xmap <Up> gk
-
-" tabs
-" map <C-t> :tabnew <CR>
-" nnoremap <C-Left> :tabprevious<CR>
-" nnoremap <C-Right> :tabnext<CR>
-nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . tabpagenr()<CR>
-map <A-1> 1gt
-imap <A-1> <C-O>1gt " ctrl+o switches to normal mode for one command
-map <A-2> 2gt
-imap <A-2> <C-O>2gt
-map <A-3> 3gt
-imap <A-3> <C-O>3gt
-map <A-4> 4gt
-imap <A-4> <C-O>4gt
-map <A-5> 5gt
-imap <A-5> <C-O>5gt
-map <A-6> 6gt
-imap <A-6> <C-O>6gt
-map <A-7> 7gt
-imap <A-7> <C-O>7gt
-map <A-8> 8gt
-imap <A-8> <C-O>8gt
 
 " leader remap
 let mapleader = ','
@@ -206,11 +180,6 @@ vmap <leader>d "+d
 nmap <leader>p "+p
 vmap <leader>p "+p
 
-" With the following, you can press F8 to show all buffers in tabs, or to
-" close all tabs (toggle: it alternately executes :tab ball and :tabo)
-let notabs = 1
-nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR>
-
 " ctags stuff
 " adapted from http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
 nmap <A-]> :pop<CR>
@@ -225,14 +194,8 @@ autocmd BufRead,BufNewFile *.tex\|*.txt\|*.md\|*.markdown set wrap linebreak nol
 " https://stackoverflow.com/questions/10964681/enabling-markdown-highlighting-in-vim
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
-" unmap ex mode
-nnoremap Q <Nop>
-
-" gui stuff
-if has('gui_running')
-    set guifont=DejaVu\ Sans\ Mono\ 12
-endif
-
+" Don't use Ex mode, use Q for formatting
+noremap Q gq
 
 " ==================== Plugins =========================
 " ==== solarized colour ====
@@ -263,26 +226,19 @@ endif
     \ 'link': 'some_bad_symbolic_links',
     \ }
   " Check :help ctrlp-options for other options.
-  " http://kien.github.io/ctrlp.vim/
-
-" ======= tagbar ========
-  nmap <F9> :TagbarToggle<CR>
+  " https://github.com/ctrlpvim/ctrlp.vim
 
 " ====== syntastic ======
   "let g:syntastic_haskell_checkers = ['hlint']
-
-" ====== ghcmod-vim =====
-  " Type of expression under cursor
-  au FileType haskell nmap <silent> <leader>ht :GhcModType<CR>
-  " Insert type of expression under cursor
-  au FileType haskell nmap <silent> <leader>hT :GhcModTypeInsert<CR>
-  " GHC errors and warnings
-  au FileType haskell nmap <silent> <leader>hc :GhcModCheck<CR>
 
 " ======= vim-go ========
 " Disable scratch window
 " https://github.com/fatih/vim-go/issues/415
   set completeopt=menu
+  let g:go_fmt_command = "goimports"
+  let g:go_metalinter_autosave = 1
+  autocmd FileType go nmap <leader>t  <Plug>(go-test)
+  autocmd FileType go nmap <leader>b  <Plug>(go-build)
 
 " ======= vimtex ========
   if !exists('g:ycm_semantic_triggers')
@@ -299,20 +255,27 @@ endif
         \ 're!\\includestandalone(\s*\[[^]]*\])?\s*\{[^}]*',
         \ ]
 
-
-" ======= rust-lang =====
+" ======= rust ==========
   " let g:rustfmt_autosave = 1
 
 " ===================== OTHER ==========================
-" Return to last edit position when opening files
-augroup last_edit
+if has("autocmd")
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
   autocmd!
+  " In text files, always limit the width of text to 78 characters
+  " autocmd BufRead *.txt set tw=78
+  " When editing a file, always jump to the last cursor position
   autocmd BufReadPost *
-       \ if line("'\"") > 0 && line("'\"") <= line("$") |
-       \   exe "normal! g`\"" |
-       \ endif
-augroup END
+  \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+  \   exe "normal! g'\"" |
+  \ endif
+  " don't write swapfile on most commonly used directories for NFS mounts or USB sticks
+  autocmd BufNewFile,BufReadPre /media/*,/run/media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
+  " start with spec file template
+  autocmd BufNewFile *.spec 0r /usr/share/vim/vimfiles/template.spec
+  augroup END
+endif
 
 " Remember info about open buffers on close
 set viminfo^=%
-
