@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-# to autostart in GNOME a .desktop file must be created under the autostart directory
-# http://standards.freedesktop.org/autostart-spec/autostart-spec-latest.html
-set -e
-set -u
-redshift -l 52.3667:4.9000 -t 6000k:5000k &
-

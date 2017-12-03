@@ -1,3 +1,0 @@
-set hintchars=hjklasdfgyuiopqwertnmzxcvb
-set defsearch=duckduckgo
-highlight Hint -append font-size: 14px;
