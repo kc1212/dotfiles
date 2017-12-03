@@ -135,9 +135,6 @@ set wildignore+=*.png,*.jpg,*.gif
 set sidescroll=1
 
 " ================ Key Bindings =====================
-" TODO probably bad to use recursive mapping, see:
-" http://learnvimscriptthehardway.stevelosh.com/chapters/05.html
-
 " map escape sequence to alt, works for gvim?
 "for i in range(48,57) + range(65,90) + range(97,122)
 "  let c = nr2char(i)
@@ -149,22 +146,22 @@ set sidescroll=1
 "nnoremap * *<C-o>
 "nnoremap # #<C-o>
 
-"map <C-a> GVgg
-"map <C-n> :enew
-"map <C-o> :e . <CR>
-"map <C-s> :w <CR>
-"imap <C-s> <Esc><C-s>
-"map <C-c> y
+"noremap <C-a> GVgg
+"noremap <C-n> :enew
+"noremap <C-o> :e . <CR>
+"noremap <C-s> :w <CR>
+"inoremap <C-s> <Esc><C-s>
+"noremap <C-c> y
 
 " moving in wraped text, nmap = normal mode map
-nmap j gj
-nmap k gk
-nmap <Down> gj
-nmap <Up> gk
-xmap j gj
-xmap k gk
-xmap <Down> gj
-xmap <Up> gk
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up> gk
+xnoremap j gj
+xnoremap k gk
+xnoremap <Down> gj
+xnoremap <Up> gk
 
 " leader remap
 let mapleader = ','
@@ -173,18 +170,18 @@ let mapleader = ','
 " to enable system clipboard, i.e. "* and "+ registers, vim need to have clipboard enabled.
 " try to install vim-gtk package and see below
 " http://stackoverflow.com/questions/11489428/how-to-make-vim-paste-from-and-copy-to-systems-clipboard
-nmap <leader>y "+y
-vmap <leader>y "+y
-nmap <leader>d "+d
-vmap <leader>d "+d
-nmap <leader>p "+p
-vmap <leader>p "+p
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>d "+d
+vnoremap <leader>d "+d
+nnoremap <leader>p "+p
+vnoremap <leader>p "+p
 
 " ctags stuff
 " adapted from http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
-nmap <A-]> :pop<CR>
-nmap <F3> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-" map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+nnoremap <A-]> :pop<CR>
+nnoremap <F3> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" noremap <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " wrap lines for text-type files, taken from:
 " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
@@ -207,14 +204,8 @@ noremap Q gq
   autocmd BufRead,BufNewFile *.pl set filetype=prolog
 
 " ==== NERDTree ====
-  nmap <leader>d :NERDTreeToggle<CR>
-  nmap <leader>f :NERDTreeFind<CR>
-  " autocmd vimenter * NERDTree
-  " autocmd vimenter * if !argc() | NERDTree | endif
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-  " map <f2> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
-  " Run NERDTree using :NERDTree
-  " Type ? in NERDTree for help
+  nnoremap <leader>d :NERDTreeToggle<CR>
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " ======= ctrlp =========
   let g:ctrlp_map = '<c-p>'
@@ -237,8 +228,8 @@ noremap Q gq
   set completeopt=menu
   let g:go_fmt_command = "goimports"
   let g:go_metalinter_autosave = 1
-  autocmd FileType go nmap <leader>t  <Plug>(go-test)
-  autocmd FileType go nmap <leader>b  <Plug>(go-build)
+  autocmd FileType go nnoremap <leader>t  <Plug>(go-test)
+  autocmd FileType go nnoremap <leader>b  <Plug>(go-build)
 
 " ======= vimtex ========
   if !exists('g:ycm_semantic_triggers')
