@@ -69,10 +69,12 @@ set mouse=a
 
 " ================ Search Settings  =================
 
+set ignorecase
+set smartcase
 set incsearch                       "Find the next match as we type the search
 set hlsearch                        "Hilight searches by default, use :noh to reset
 set viminfo='100,f1                 "Save up to 100 marks, enable capital marks
-set tags=./tags;/,codex.tags;/      "set the ctags search directory, and for codex
+set tags=./tags;		    "Set the ctags search directory
 
 " ================ Turn Off Swap Files ==============
 
