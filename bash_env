@@ -1,18 +1,28 @@
 # defaults
-export EDITOR=nvim
+if  [ -x "$(command -v nvim)" ]; then
+    export EDITOR=nvim
+else
+    export EDITOR=vim
+fi
 export CLICOLOR=TRUE
 # export TERM="xterm-256color" # not recommended by tmux
 
 # rust
-export PATH=$HOME/.cargo/bin:$PATH
-export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+if [ -x "$(command -v rustc)" ]; then
+    export PATH=$HOME/.cargo/bin:$PATH
+    export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+fi
 
 # golang
-export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$PATH
+if [ -x "$(command -v go)" ]; then
+    export GOPATH=$HOME/go
+    export PATH=$GOPATH/bin:$PATH
+fi
 
 # stack (local bin)
-export PATH=$HOME/.local/bin:$PATH
+if [ -x "$(command -v ghc)" ]; then
+    export PATH=$HOME/.local/bin:$PATH
+fi
 
 # calculator
 calc() {
