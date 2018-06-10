@@ -1,8 +1,10 @@
 # defaults
 if  [ -x "$(command -v nvim)" ]; then
     export EDITOR=nvim
+    export VISUAL=nvim
 else
     export EDITOR=vim
+    export VISUAL=vim
 fi
 export CLICOLOR=TRUE
 # export TERM="xterm-256color" # not recommended by tmux
