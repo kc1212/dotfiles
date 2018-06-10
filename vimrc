@@ -19,7 +19,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic', { 'for': ['python', 'rust', 'haskell', 'sh', 'c'] }
 Plug 'scrooloose/nerdcommenter'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+" Plug 'Valloric/YouCompleteMe'
 
 " Latex plugins
 Plug 'lervag/vimtex', { 'for': 'tex' }
@@ -50,7 +50,8 @@ set showmatch                   "Show matching brackets
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
-set lazyredraw                  " Don't redraw while executing macros (good performance config)
+set lazyredraw                  "Don't redraw while executing macros (good performance config)
+set nojoinspaces                "Get rid of double spaces
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -62,7 +63,7 @@ syntax on
 
 " turn on ruler (vertical line)
 set colorcolumn=80
-highlight ColorColumn guibg=Gray14
+"highlight ColorColumn guibg=Gray14
 
 " enable mouse activities for all, including scrolling
 set mouse=a
@@ -128,7 +129,7 @@ set wildignore+=*DS_Store*
 set wildignore+=*.gem
 "set wildignore+=log/**
 "set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.png,*.jpg,*.gif,*.pdf
 
 " ================ Scrolling ========================
 
@@ -181,8 +182,8 @@ vnoremap <leader>p "+p
 
 " ctags stuff
 " adapted from http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
-nnoremap <A-]> :pop<CR>
-nnoremap <F3> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" nnoremap <A-]> :pop<CR>
+" nnoremap <F3> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " noremap <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 " wrap lines for text-type files, taken from:
