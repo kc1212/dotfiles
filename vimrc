@@ -16,10 +16,10 @@ call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/syntastic', { 'for': ['python', 'rust', 'haskell', 'sh', 'c'] }
+Plug 'scrooloose/syntastic', { 'for': ['python', 'rust', 'haskell', 'sh', 'c', 'scala'] }
 Plug 'scrooloose/nerdcommenter'
 Plug 'jlanzarotta/bufexplorer'
-" Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
 " Latex plugins
 Plug 'lervag/vimtex', { 'for': 'tex' }
@@ -103,6 +103,7 @@ set expandtab
 
 " exception for c/cpp and golang source files, alternatively use ftplugin
 autocmd BufRead,BufNewFile *.c,*.cpp,*.h,*.hpp,*.go set sw=8 sts=8 ts=8 noic cin noexpandtab
+autocmd BufRead,BufNewFile *.scala set sw=2 sts=2 ts=2 noic cin expandtab
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
