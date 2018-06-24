@@ -1,18 +1,12 @@
-*.o
-*.hi
-*.errors
-*.py[cod]
-*.log
+# Simple Build Tool
+# http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html#configuring-version-control
 
-vim/backups/
-vim/bundle/
-vim/plugged/
-vim/autoload/plug.vim
-*.swp
-.netrwhist
-
-config/ranger/bookmarks
-config/ranger/history
-config/ranger/tagged
-
-
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.history
+.cache
+.lib/
