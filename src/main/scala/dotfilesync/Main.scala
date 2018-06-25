@@ -1,9 +1,9 @@
 package dotfilesync
 
-import java.io.File
-import java.nio.file.{Files, Paths, LinkOption}
+import java.nio.file.{Files, Path, Paths, LinkOption}
 
 import scala.util.{Failure, Success, Try}
+import scala.collection.JavaConverters._
 
 object FileOp extends Enumeration {
   type FileOp = Value
@@ -12,59 +12,61 @@ object FileOp extends Enumeration {
 
 object Main {
 
-  import FileOp._
-
   type TryNull = Try[Null]
 
-  def downloadFileTo(url: String, target: String): TryNull = {
-    var path = Paths.get(target)
+  import FileOp._
+
+  def downloadFileTo(url: String, path: Path): TryNull = {
     val buf = scala.io.Source.fromURL(url).takeWhile(_ != -1).map(_.toByte).toArray
-    Try(path.toFile.getParentFile.mkdirs)
+    Try(Files.createDirectories(path.getParent))
       .map(_ => Files.write(path, buf))
       .flatMap(_ => Success(null))
   }
 
-  def backupAndOp(fileOp: FileOp)(source: File, target: File, backup: File): TryNull = {
+  def backupAndOp(fileOp: FileOp)(source: Path, target: Path, backup: Path): TryNull = {
     Try({
-      if (Files.exists(target.toPath, LinkOption.NOFOLLOW_LINKS)) {
-        backup.getParentFile.mkdirs
-        Files.move(target.toPath, backup.toPath)
+      if (Files.exists(target, LinkOption.NOFOLLOW_LINKS)) {
+        Files.createDirectories(backup.getParent)
+        Files.move(target, backup)
       }
     })
-      .map(_ => target.getParentFile.mkdirs)
+      .map(_ => Files.createDirectories(target.getParent))
       .map(_ => fileOp match {
-        case SymLink => Files.createSymbolicLink(target.toPath, source.toPath)
-        case Copy => Files.copy(source.toPath, target.toPath)
+        case SymLink => Files.createSymbolicLink(target, source)
+        case Copy => Files.copy(source, target)
       })
       .flatMap(_ => Success(null))
   }
 
-  def traverseWith(f: File, fn: File => TryNull): TryNull = {
-    if (f.isDirectory)
-      f.listFiles.foldLeft[TryNull](Success(null))((t, f) => t match {
+  def traverseWith(f: Path, fn: Path => TryNull): TryNull = {
+    if (Files.isDirectory(f))
+      Files.newDirectoryStream(f)
+        .asScala
+        .foldLeft[TryNull](Success(null))((t, f) => t match {
         case Success(_) => traverseWith(f, fn)
         case e@Failure(_) => e
       })
     else
-      fn(f.getAbsoluteFile)
+      fn(f.toAbsolutePath)
   }
 
-  def syncDotfiles(dir: File, backupDir: File, fileOp: FileOp): TryNull = {
-    if (!dir.exists)
-      Failure(new Error(dir.getAbsolutePath + " does not exist"))
-    else if (!dir.isDirectory)
-      Failure(new Error(dir.getAbsolutePath + " is not a directory"))
+  def syncDotfiles(dir: Path, backupPath: Path, fileOp: FileOp): TryNull = {
+    if (!Files.exists(dir))
+      Failure(new Error(dir + " does not exist"))
+    else if (!Files.isDirectory(dir))
+      Failure(new Error(dir + " is not a directory"))
     else {
-      if (!backupDir.mkdir) {
-        return Failure(new Error("failed to make directory " + backupDir))
-      }
-      val rootDir = dir.getAbsolutePath
+      Files.createDirectories(backupPath)
+      val rootPathElems = dir.toAbsolutePath.getNameCount // e.g., "/a/b/c" = 3
+      val homePath = Paths.get(System.getProperty("user.home"))
       traverseWith(dir, f => {
-        if (Files.isSymbolicLink(f.toPath)) return Failure(new Error(f + " is symlink"))
-        val rightConfigPath = f.getAbsolutePath.replace(rootDir, "")
-        val homeFile = Paths.get(System.getProperty("user.home"), rightConfigPath).toFile
-        val backupFile = new File(backupDir, rightConfigPath)
-        backupAndOp(fileOp)(f, homeFile, backupFile)
+        if (Files.isSymbolicLink(f))
+          return Failure(new Error(f + " is symlink"))
+        val fAbs = f.toAbsolutePath
+        val rightConfigPath = fAbs.subpath(rootPathElems, fAbs.getNameCount)
+        val homeConfigFile = homePath.resolve(rightConfigPath)
+        val backupFile = backupPath.resolve(rightConfigPath)
+        backupAndOp(fileOp)(fAbs, homeConfigFile, backupFile)
       })
     }
   }
@@ -75,17 +77,17 @@ object Main {
       return
     }
     // files in copyDir and linkDir must not conflict
-    val now = System.currentTimeMillis()/1000
-    val copyDir = new File("copydir")
-    val linkDir = new File("symlinkdir")
-    val copyBackup = new File("copydir_backup" + now)
-    val linkBackup = new File("symlinkdir_backup" + now)
+    val now = System.currentTimeMillis() / 1000
+    val copyDir = Paths.get("copydir")
+    val linkDir = Paths.get("symlinkdir")
+    val copyBackup = Paths.get("copydir_backup_" + now)
+    val linkBackup = Paths.get("symlinkdir_backup_" + now)
     val res = syncDotfiles(copyDir, copyBackup, Copy)
       .flatMap(_ => syncDotfiles(linkDir, linkBackup, SymLink))
       .flatMap(_ => {
         val url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-        val target = System.getProperty("user.home") + "/.local/share/nvim/site/autoload/plug.vim"
-        downloadFileTo(url, target)
+        val path = Paths.get(System.getProperty("user.home"), ".local/share/nvim/site/autoload/plug.vim")
+        downloadFileTo(url, path)
       })
     res match {
       case Success(_) => println("ok")
