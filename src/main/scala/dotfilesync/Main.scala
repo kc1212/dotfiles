@@ -18,9 +18,10 @@ object Main {
 
   def downloadFileTo(url: String, path: Path): TryNull = {
     val buf = scala.io.Source.fromURL(url).takeWhile(_ != -1).map(_.toByte).toArray
-    Try(Files.createDirectories(path.getParent))
-      .map(_ => Files.write(path, buf))
-      .flatMap(_ => Success(null))
+    Try({
+      Files.createDirectories(path.getParent)
+      Files.write(path, buf)
+    }).flatMap(_ => Success(null))
   }
 
   def backupAndOp(fileOp: FileOp)(source: Path, target: Path, backup: Path): TryNull = {
@@ -29,13 +30,12 @@ object Main {
         Files.createDirectories(backup.getParent)
         Files.move(target, backup)
       }
-    })
-      .map(_ => Files.createDirectories(target.getParent))
-      .map(_ => fileOp match {
+      Files.createDirectories(target.getParent)
+      fileOp match {
         case SymLink => Files.createSymbolicLink(target, source)
         case Copy => Files.copy(source, target)
-      })
-      .flatMap(_ => Success(null))
+      }
+    }).flatMap(_ => Success(null))
   }
 
   def traverseWith(f: Path, fn: Path => TryNull): TryNull = {
@@ -47,7 +47,7 @@ object Main {
         case e@Failure(_) => e
       })
     else
-      fn(f.toAbsolutePath)
+      fn(f)
   }
 
   def syncDotfiles(dir: Path, backupPath: Path, fileOp: FileOp): TryNull = {
@@ -86,7 +86,7 @@ object Main {
       .flatMap(_ => syncDotfiles(linkDir, linkBackup, SymLink))
       .flatMap(_ => {
         val url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-        val path = Paths.get(System.getProperty("user.home"), ".local/share/nvim/site/autoload/plug.vim")
+        val path = Paths.get(System.getProperty("user.home")).resolve(".local/share/nvim/site/autoload/plug.vim")
         downloadFileTo(url, path)
       })
     res match {
