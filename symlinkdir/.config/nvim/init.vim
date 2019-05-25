@@ -16,10 +16,10 @@ call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/syntastic', { 'for': ['python', 'rust', 'haskell', 'sh', 'c', 'scala'] }
+Plug 'scrooloose/syntastic', { 'for': ['python', 'rust', 'haskell', 'sh', 'c', 'scala', 'lua'] }
 Plug 'scrooloose/nerdcommenter'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 
 " Latex plugins
 Plug 'lervag/vimtex', { 'for': 'tex' }
@@ -32,6 +32,9 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 " GNU Plot
 Plug 'vim-scripts/gnuplot.vim'
+
+" Scala
+Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 
 call plug#end()
 
@@ -225,6 +228,8 @@ noremap Q gq
 
 " ====== syntastic ======
   "let g:syntastic_haskell_checkers = ['hlint']
+  let g:syntastic_lua_checkers = ["luacheck"]
+  let g:syntastic_lua_luacheck_args = "--std +love"
 
 " ======= vim-go ========
 " Disable scratch window
@@ -232,6 +237,13 @@ noremap Q gq
   set completeopt=menu
   let g:go_fmt_command = "goimports"
   let g:go_metalinter_autosave = 1
+  let g:go_def_mode = 'gopls'
+  let g:go_info_mode = 'gopls'
+
+  let g:syntastic_go_checkers = ['golint', 'govet', 'gometalinter']
+  let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
+  let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
   autocmd FileType go nnoremap <leader>t  <Plug>(go-test)
   autocmd FileType go nnoremap <leader>b  <Plug>(go-build)
 
