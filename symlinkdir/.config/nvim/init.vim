@@ -286,3 +286,6 @@ endif
 
 " Remember info about open buffers on close
 set viminfo^=%
+
+" Insert date
+inoremap <F5> <C-R>=strftime("%Y-%m-%d")<CR>
