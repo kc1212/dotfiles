@@ -22,7 +22,7 @@ if [ -x "$(command -v go)" ]; then
 fi
 
 # stack (local bin)
-if [ -x "$(command -v ghc)" ]; then
+if [ -x "$(command -v stack)" ]; then
     export PATH=$HOME/.local/bin:$PATH
 fi
 
