@@ -25,6 +25,11 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Terminal color
+if [ -f ~/.dircolors ]; then
+    eval $(dircolors ~/.dircolors)
+fi
+
 # Nix
 if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then . "$HOME/.nix-profile/etc/profile.d/nix.sh"; fi
 
