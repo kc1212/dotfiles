@@ -31,3 +31,4 @@ calc() {
     echo "scale=3;$@" | bc -l
 }
 
+alias dotfiles='/usr/bin/git --git-dir=/home/kc1212/.cfg/ --work-tree=/home/kc1212'
