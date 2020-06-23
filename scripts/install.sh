@@ -11,7 +11,7 @@ if [ $? = 0 ]; then
     echo "Checked out dotfiles."
 else
     echo "Backing up pre-existing dot files."
-    dotfiles checkout 2>&1 | egrep "^\s" | sed 's/^\s*//g' | parallel --will-cite 'mkdir -p .dotfiles-backup/{//}; mv {} .dotfiles-backup/{}'
+    dotfiles checkout 2>&1 | egrep "^\s" | sed 's/^\s*//g' | parallel --will-cite 'mkdir -p dotfiles-backup/{//}; mv {} dotfiles-backup/{}'
 fi;
 dotfiles checkout
 if [ $? != 0 ]; then
