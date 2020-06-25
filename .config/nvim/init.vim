@@ -16,7 +16,7 @@ call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/syntastic', { 'for': ['python', 'rust', 'haskell', 'sh', 'c', 'scala', 'lua'] }
+Plug 'scrooloose/syntastic', { 'for': ['python', 'rust', 'haskell', 'sh', 'c', 'cpp', 'scala', 'lua'] }
 Plug 'scrooloose/nerdcommenter'
 Plug 'jlanzarotta/bufexplorer'
 " Plug 'Valloric/YouCompleteMe'
@@ -107,6 +107,9 @@ set expandtab
 " exception for c/cpp and golang source files, alternatively use ftplugin
 autocmd BufRead,BufNewFile *.c,*.cpp,*.h,*.hpp,*.go set sw=8 sts=8 ts=8 noic cin noexpandtab
 autocmd BufRead,BufNewFile *.scala set sw=2 sts=2 ts=2 noic cin expandtab
+
+" treat sage as python syntax
+autocmd BufRead,BufNewFile *.sage,*.pyx,*.spyx set filetype=python
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
@@ -243,9 +246,6 @@ noremap Q gq
   let g:syntastic_go_checkers = ['golint', 'govet', 'gometalinter']
   let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
   let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-
-  autocmd FileType go nnoremap <leader>t  <Plug>(go-test)
-  autocmd FileType go nnoremap <leader>b  <Plug>(go-build)
 
 " ======= vimtex ========
   if !exists('g:ycm_semantic_triggers')
