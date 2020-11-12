@@ -31,3 +31,5 @@ calc() {
     echo "scale=3;$@" | bc -l
 }
 
+# screen
+export SCREENDIR=$HOME/.screen
