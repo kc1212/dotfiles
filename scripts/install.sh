@@ -6,6 +6,8 @@ function dotfiles {
 
 git clone --bare git@github.com:kc1212/dotfiles.git $HOME/.cfg
 
+pushd "$HOME"
+
 dotfiles checkout
 if [ $? = 0 ]; then
     echo "Checked out dotfiles."
@@ -20,3 +22,5 @@ if [ $? != 0 ]; then
 fi;
 dotfiles config status.showUntrackedFiles no
 echo "Done."
+
+popd
