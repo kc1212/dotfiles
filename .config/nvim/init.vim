@@ -19,7 +19,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic', { 'for': ['python', 'rust', 'haskell', 'sh', 'c', 'cpp', 'scala', 'lua'] }
 Plug 'scrooloose/nerdcommenter'
 Plug 'jlanzarotta/bufexplorer'
-" Plug 'Valloric/YouCompleteMe'
+Plug 'dense-analysis/ale', { 'for': 'rust' }
 
 " Latex plugins
 Plug 'lervag/vimtex', { 'for': 'tex' }
@@ -192,6 +192,7 @@ vnoremap <leader>p "+p
 " nnoremap <A-]> :pop<CR>
 " nnoremap <F3> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 " noremap <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+noremap <C-]> :ALEGoToDefinition<CR>
 
 " wrap lines for text-type files, taken from:
 " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
@@ -264,6 +265,22 @@ noremap Q gq
 
 " ======= rust ==========
   " let g:rustfmt_autosave = 1
+
+" ======= ale ===========
+  let g:ale_linters = {
+              \  'rust': ['analyzer'],
+              \}
+  
+  set completeopt=menu,menuone,preview,noselect,noinsert
+  let g:ale_completion_enabled = 1
+  
+  " ALE
+  " Load all plugins now.
+  " Plugins need to be added to runtimepath before helptags can be generated.
+  packloadall
+  " Load all of the helptags now, after plugins have been loaded.
+  " All messages and errors will be ignored.
+  silent! helptags ALL
 
 " ===================== OTHER ==========================
 if has("autocmd")
