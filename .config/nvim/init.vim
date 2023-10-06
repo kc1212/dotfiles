@@ -15,17 +15,17 @@ call plug#begin()
 " My plugins here:
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'altercation/vim-colors-solarized'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'scrooloose/syntastic', { 'for': ['python', 'rust', 'haskell', 'sh', 'c', 'cpp', 'scala', 'lua'] }
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdtree'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'dense-analysis/ale', { 'for': 'rust' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'tpope/vim-sleuth' " automatically figure indentation style
 
 " Latex plugins
 Plug 'lervag/vimtex', { 'for': 'tex' }
 
 " Go plugins
-Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
+"Plug 'fatih/vim-go', { 'for': 'go', 'do': ':GoInstallBinaries' }
 
 " Rust plugins
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
@@ -34,7 +34,7 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'vim-scripts/gnuplot.vim'
 
 " Scala
-Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
+"Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 
 call plug#end()
 
@@ -99,14 +99,11 @@ set undofile
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
 set expandtab
 
 " exception for c/cpp and golang source files, alternatively use ftplugin
-autocmd BufRead,BufNewFile *.c,*.cpp,*.h,*.hpp,*.go set sw=8 sts=8 ts=8 noic cin noexpandtab
-autocmd BufRead,BufNewFile *.scala set sw=2 sts=2 ts=2 noic cin expandtab
+"autocmd BufRead,BufNewFile *.c,*.cpp,*.h,*.hpp,*.go set sw=8 sts=8 ts=8 noic cin noexpandtab
+"autocmd BufRead,BufNewFile *.scala set sw=2 sts=2 ts=2 noic cin expandtab
 
 " treat sage as python syntax
 autocmd BufRead,BufNewFile *.sage,*.pyx,*.spyx set filetype=python
@@ -187,13 +184,6 @@ vnoremap <leader>d "+d
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 
-" ctags stuff
-" adapted from http://stackoverflow.com/questions/563616/vim-and-ctags-tips-and-tricks
-" nnoremap <A-]> :pop<CR>
-" nnoremap <F3> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-" noremap <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-noremap <C-]> :ALEGoToDefinition<CR>
-
 " wrap lines for text-type files, taken from:
 " http://vim.wikia.com/wiki/Word_wrap_without_line_breaks
 autocmd BufRead,BufNewFile *.tex\|*.txt\|*.md\|*.markdown set wrap linebreak nolist textwidth=0 wrapmargin=0
@@ -230,23 +220,18 @@ noremap Q gq
   " Check :help ctrlp-options for other options.
   " https://github.com/ctrlpvim/ctrlp.vim
 
-" ====== syntastic ======
-  "let g:syntastic_haskell_checkers = ['hlint']
-  let g:syntastic_lua_checkers = ["luacheck"]
-  let g:syntastic_lua_luacheck_args = "--std +love"
-
 " ======= vim-go ========
 " Disable scratch window
 " https://github.com/fatih/vim-go/issues/415
-  set completeopt=menu
-  let g:go_fmt_command = "goimports"
-  let g:go_metalinter_autosave = 1
-  let g:go_def_mode = 'gopls'
-  let g:go_info_mode = 'gopls'
-
-  let g:syntastic_go_checkers = ['golint', 'govet', 'gometalinter']
-  let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
-  let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+"  set completeopt=menu
+"  let g:go_fmt_command = "goimports"
+"  let g:go_metalinter_autosave = 1
+"  let g:go_def_mode = 'gopls'
+"  let g:go_info_mode = 'gopls'
+"
+"  let g:syntastic_go_checkers = ['golint', 'govet', 'gometalinter']
+"  let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
+"  let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " ======= vimtex ========
   if !exists('g:ycm_semantic_triggers')
@@ -267,13 +252,15 @@ noremap Q gq
   " let g:rustfmt_autosave = 1
 
 " ======= ale ===========
+  noremap <C-]> :ALEGoToDefinition<CR>
   let g:ale_linters = {
               \  'rust': ['analyzer'],
+              \  'cpp' : ['clangd'],
               \}
-  
+
   set completeopt=menu,menuone,preview,noselect,noinsert
   let g:ale_completion_enabled = 1
-  
+
   " ALE
   " Load all plugins now.
   " Plugins need to be added to runtimepath before helptags can be generated.
