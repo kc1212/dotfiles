@@ -17,9 +17,10 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'preservim/nerdtree'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'dense-analysis/ale', { 'for': 'rust' }
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'tpope/vim-sleuth' " automatically figure indentation style
+" Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+
+" Automatically figure indentation style
+Plug 'tpope/vim-sleuth'
 
 " Latex plugins
 Plug 'lervag/vimtex', { 'for': 'tex' }
@@ -251,23 +252,9 @@ noremap Q gq
 " ======= rust ==========
   " let g:rustfmt_autosave = 1
 
-" ======= ale ===========
-  noremap <C-]> :ALEGoToDefinition<CR>
-  let g:ale_linters = {
-              \  'rust': ['analyzer'],
-              \  'cpp' : ['clangd'],
-              \}
-
-  set completeopt=menu,menuone,preview,noselect,noinsert
-  let g:ale_completion_enabled = 1
-
-  " ALE
-  " Load all plugins now.
-  " Plugins need to be added to runtimepath before helptags can be generated.
-  packloadall
-  " Load all of the helptags now, after plugins have been loaded.
-  " All messages and errors will be ignored.
-  silent! helptags ALL
+" ======= coc ===========
+  " set tagfunc=CocTagFunc
+  " let g:coc_global_extensions = ['coc-rust-analyzer']
 
 " ===================== OTHER ==========================
 if has("autocmd")
